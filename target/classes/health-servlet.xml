@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	
+	<import resource="classpath:dataSource.xml"/>
+	<import resource="classpath:health-url-mapping.xml" />
+	
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.mockCommon" />
+
+	<!-- for ajax with json -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/html;charset=GBK</value>
+						</list>
+					</property>
+				</bean>
+				<bean id="jacksonMessageConverter"
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>application/json;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<mvc:annotation-driven />
+
+	<!-- Session过滤器，用于登录状态检测 -->
+	<bean id="sessionFilter" class="com.mockCommon.filter.SessionFilter"></bean>
+
+	<tx:annotation-driven transaction-manager="transactionManagerMock" />
+	<bean id="transactionManagerMock" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceMock" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManagerInsr" />
+	<bean id="transactionManagerInsr" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceInsr" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManagerOrder" />
+	<bean id="transactionManagerOrder" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceOrder" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManagerProduct" />
+	<bean id="transactionManagerProduct" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceProduct" />
+	</bean>
+	
+	<!-- for aop annotation -->
+	<aop:aspectj-autoproxy />
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	
+</beans>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="BaoJia">
+	<resultMap id="resultMap" type="com.mockCommon.model.web.pingan.BaoJiaConfig">
+		<result property="id" column="id"></result>
+		<result property="packageName" column="package_name"></result>
+		<result property="packageType" column="package_type"></result>
+		<result property="packageTypeDesc" column="package_type_desc"></result>
+		<result property="packageDefault" column="package_default"></result>
+		<result property="packageReturn" column="package_return"></result>
+		<result property="busiInsrStartTime" column="busi_insr_start_time"></result>
+		<result property="jqInsrStartTime" column="jq_insr_start_time"></result>
+		<result property="amount01" column="amount01"></result>
+		<result property="amount02" column="amount02"></result>
+		<result property="amount03" column="amount03"></result>
+		<result property="amount04" column="amount04"></result>
+		<result property="amount05" column="amount05"></result>
+		<result property="amount08" column="amount08"></result>
+		<result property="amount17" column="amount17"></result>
+		<result property="amount18" column="amount18"></result>
+		<result property="amount27" column="amount27"></result>
+		<result property="amount28" column="amount28"></result>
+		<result property="amount41" column="amount41"></result>
+		<result property="amount48" column="amount48"></result>
+		<result property="amount49" column="amount49"></result>
+		<result property="amount50" column="amount50"></result>
+		<result property="amount57" column="amount57"></result>
+		<result property="amount59" column="amount59"></result>
+		<result property="amount63" column="amount63"></result>
+		<result property="updateTime" column="update_time"></result>
+		<result property="packageNameDesc" column="package_name_desc"></result>
+	</resultMap>
+	<insert id="insertConfig" parameterType="com.mockCommon.model.web.pingan.BaoJiaConfig">
+		insert into insr_baojia(id, package_name, package_type, package_default, package_return, busi_insr_start_time, jq_insr_start_time,
+				amount01, amount02, amount03, amount04, amount05, amount08, amount17, amount18, amount27,
+				amount28, amount41, amount48, amount49, amount50, amount57, amount59, amount63, update_time)
+			values(
+				#{id, jdbcType=VARCHAR},
+				#{packageName, jdbcType=VARCHAR},
+				#{packageType, jdbcType=DECIMAL},
+				#{packageDefault, jdbcType=DECIMAL},
+				#{packageReturn, jdbcType=DECIMAL},
+				#{busiInsrStartTime, jdbcType=TIMESTAMP},
+				#{jqInsrStartTime, jdbcType=TIMESTAMP},
+				#{amount01, jdbcType=DECIMAL},
+				#{amount02, jdbcType=VARCHAR},
+				#{amount03, jdbcType=DECIMAL},
+				#{amount04, jdbcType=VARCHAR},
+				#{amount05, jdbcType=VARCHAR},
+				#{amount08, jdbcType=DECIMAL},
+				#{amount17, jdbcType=VARCHAR},
+				#{amount18, jdbcType=DECIMAL},
+				#{amount27, jdbcType=DECIMAL},
+				#{amount28, jdbcType=DECIMAL},
+				#{amount41, jdbcType=DECIMAL},
+				#{amount48, jdbcType=DECIMAL},
+				#{amount49, jdbcType=DECIMAL},
+				#{amount50, jdbcType=DECIMAL},
+				#{amount57, jdbcType=DECIMAL},
+				#{amount59, jdbcType=DECIMAL},
+				#{amount63, jdbcType=DECIMAL},
+				sysdate
+			)
+	</insert>
+	<update id="updateConfig" parameterType="com.mockCommon.model.web.pingan.BaoJiaConfig">
+		update insr_baojia
+		<set>
+			<if test="packageDefault!=null and packageDefault!=''">
+				package_default = #{packageDefault},
+			</if>
+			<if test="packageReturn!=null and packageReturn!=''">
+				package_return = #{packageReturn},
+			</if>
+			<if test="busiInsrStartTime!=null and busiInsrStartTime!=''">
+				busi_insr_start_time = #{busiInsrStartTime},
+			</if>
+			<if test="jqInsrStartTime!=null and jqInsrStartTime!=''">
+				jq_insr_start_time = #{jqInsrStartTime},
+			</if>
+			<if test="amount01!=null and amount01!=''">
+				amount01 = #{amount01},
+			</if>
+			<if test="amount02!=null and amount02!=''">
+				amount02 = #{amount02},
+			</if>
+			<if test="amount03!=null and amount03!=''">
+				amount03 = #{amount03},
+			</if>
+			<if test="amount04!=null and amount04!=''">
+				amount04 = #{amount04},
+			</if>
+			<if test="amount05!=null and amount05!=''">
+				amount05 = #{amount05},
+			</if>
+			<if test="amount08!=null and amount08!=''">
+				amount08 = #{amount08},
+			</if>
+			<if test="amount17!=null and amount17!=''">
+				amount17 = #{amount17},
+			</if>
+			<if test="amount18!=null and amount18!=''">
+				amount18 = #{amount18},
+			</if>
+			<if test="amount27!=null and amount27!=''">
+				amount27 = #{amount27},
+			</if>
+			<if test="amount28!=null and amount28!=''">
+				amount28 = #{amount28},
+			</if>
+			<if test="amount41!=null and amount41!=''">
+				amount41 = #{amount41},
+			</if>
+			<if test="amount48!=null and amount48!=''">
+				amount48 = #{amount48},
+			</if>
+			<if test="amount49!=null and amount49!=''">
+				amount49 = #{amount49},
+			</if>
+			<if test="amount50!=null and amount50!=''">
+				amount50 = #{amount50},
+			</if>
+			<if test="amount57!=null and amount57!=''">
+				amount57 = #{amount57},
+			</if>
+			<if test="amount59!=null and amount59!=''">
+				amount59 = #{amount59},
+			</if>
+			<if test="amount63!=null and amount63!=''">
+				amount63 = #{amount63},
+			</if>
+				update_time = sysdate
+		</set>
+		<where>
+			<if test="packageType!=null and packageType!=''">
+				package_type = #{packageType}
+			</if>
+		</where>
+	</update>
+	<update id="updateDefaultPk" parameterType="Map">
+		begin
+		update insr_baojia t set t.package_default = 0;
+		update insr_baojia set package_default = 1 
+		where  package_type = #{package_type}
+		;end;
+	</update>
+	<update id="updateReturnPk" parameterType="java.util.List">
+		begin
+		update insr_baojia t set t.package_return = 0;
+		update insr_baojia set package_return = 1
+		where package_type in 
+		<foreach collection="list" item="type" index="index" open="(" close=")" separator=",">
+			#{type}
+		</foreach>
+		;end;
+	</update>
+	<update id="updateStartTime" parameterType="com.mockCommon.model.web.pingan.BaoJiaConfig">
+		update insr_baojia set 
+			busi_insr_start_time = #{busiInsrStartTime},
+			jq_insr_start_time = #{jqInsrStartTime}
+	</update>
+	<select id="queryLatestConfig" resultType="com.mockCommon.model.web.pingan.BaoJiaConfig">
+		select t1.* from (
+			select t.* from insr_baojia t order by t.update_time desc
+		) t1 where rownum &lt;= 1
+	</select>
+	<select id="queryConfig" parameterType="Map" resultMap="resultMap">
+		select * from insr_baojia t
+		<where>
+			<if test="packageType!=null and packageType!=''">
+				t.package_type = #{packageType}
+			</if>
+			<if test="packageName!=null and packageName!=''">
+				t.package_name = #{packageName}
+			</if>
+		</where>
+	</select>
+	<select id="queryAllConfigs" resultMap="resultMap">
+		select id, package_name, package_type,
+				decode(package_type, '0', 'recommend', '1', 'economical', '2', 'luxury', '3', 'renewal', '4', 'optional') package_type_desc,
+				package_default, package_return, busi_insr_start_time, jq_insr_start_time,
+				amount01, amount02, amount03, amount04, amount05, amount08, amount17, amount18, amount27,
+				amount28, amount41, amount48, amount49, amount50, amount57, amount59, amount63, update_time,
+				 package_name_desc
+		from insr_baojia
+	</select>
+</mapper>

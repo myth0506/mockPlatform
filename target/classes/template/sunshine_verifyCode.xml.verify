@@ -1,0 +1,4 @@
+	<Response>
+		<ResponseCode>${data.responseCode!''}</ResponseCode>
+        <ResponseMessage>${data.responseMessage!''}</ResponseMessage>
+	</Response>

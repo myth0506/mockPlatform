@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Sunshine">
+
+	<resultMap id="SearchCarInfoResultMap"
+		type="com.mockCommon.model.web.yangguang.SearchCarInfoModel">
+		<result property="vehicleNo" column="vehicle_no"></result>
+		<result property="ownerName" column="owner_name"></result>
+		<result property="ownerIdNo" column="owner_id_no"></result>
+		<result property="ownerMobile" column="owner_mobile"></result>
+		<result property="ownerEmail" column="owner_email"></result>
+		<result property="applicantName" column="applicant_name"></result>
+		<result property="applicantIdNo" column="applicant_id_no"></result>
+		<result property="applicantMobile" column="applicant_mobile"></result>
+		<result property="applicantEmail" column="applicant_email"></result>
+		<result property="insuredName" column="insured_name"></result>
+		<result property="insuredIdNo" column="insured_id_no"></result>
+		<result property="insuredMobile" column="insured_mobile"></result>
+		<result property="insuredEmail" column="insured_email"></result>
+		<result property="vehicleId" column="vehicle_id"></result>
+		<result property="vehicleFrameNo" column="vehicle_frame_no"></result>
+		<result property="engineNo" column="engine_no"></result>
+		<result property="registerDate" column="register_date"></result>
+		<result property="vehicleModelName" column="vehicle_model_name"></result>
+		<result property="vehicleId" column="vehicle_id"></result>
+		<result property="specialCarFlag" column="special_car_flag"></result>
+		<result property="specialCarDate" column="special_car_date"></result>
+	</resultMap>
+
+	<select id="searchCarInfo" parameterType="Map"
+		resultMap="SearchCarInfoResultMap">
+		select * from SUNSHINE_SEARCH_CAR_INFO where
+		vehicle_no =
+		#{vehicleNo,jdbcType=VARCHAR}
+	</select>
+
+	<update id="updateSearchCarInfo" parameterType="Map">
+		update
+		SUNSHINE_SEARCH_CAR_INFO set
+		owner_name = #{ownerName,
+		jdbcType=VARCHAR},
+		owner_id_no = #{ownerIdNo,
+		jdbcType=VARCHAR},
+		owner_mobile = #{ownerMobile, jdbcType=VARCHAR},
+		owner_email =
+		#{ownerEmail, jdbcType=VARCHAR},
+		applicant_name =
+		#{applicantName,
+		jdbcType=VARCHAR},
+		applicant_id_no = #{applicantIdNo,
+		jdbcType=VARCHAR},
+		applicant_mobile = #{applicantMobile,
+		jdbcType=VARCHAR},
+		applicant_email = #{applicantEmail,
+		jdbcType=VARCHAR},
+		insured_name = #{insuredName, jdbcType=VARCHAR},
+		insured_id_no = #{insuredIdNo, jdbcType=VARCHAR},
+		insured_mobile =
+		#{insuredMobile, jdbcType=VARCHAR},
+		insured_email = #{insuredEmail,
+		jdbcType=VARCHAR},
+		vehicle_frame_no = #{vehicleFrameNo,
+		jdbcType=VARCHAR},
+		engine_no = #{engineNo, jdbcType=VARCHAR},
+		register_date = #{registerDate, jdbcType=TIMESTAMP},
+		vehicle_model_name = #{vehicleModelName, jdbcType=VARCHAR},
+		vehicle_id
+		= #{vehicleId, jdbcType=VARCHAR},
+		special_car_flag = #{specialCarFlag,
+		jdbcType=VARCHAR},
+		special_car_date = #{specialCarDate,
+		jdbcType=TIMESTAMP}
+		where vehicle_no = #{vehicleNo,jdbcType=VARCHAR}
+	</update>
+
+	<insert id="insertSearchCarInfo"
+		parameterType="com.mockCommon.model.web.yangguang.SearchCarInfoModel">
+		insert into
+		SUNSHINE_SEARCH_CAR_INFO (vehicle_no,
+		owner_name, owner_id_no, owner_mobile, owner_email, applicant_name,
+		applicant_id_no, applicant_mobile, applicant_email, insured_name,
+		insured_id_no,
+		insured_mobile, insured_email, vehicle_id,
+		vehicle_model_name,
+		vehicle_frame_no,
+		engine_no, register_date,
+		special_car_flag,
+		special_car_date)
+		values
+		(#{vehicleNo,jdbcType=VARCHAR},
+		#{ownerName,jdbcType=VARCHAR},
+		#{ownerIdNo,jdbcType=VARCHAR},
+		#{ownerMobile,jdbcType=VARCHAR},
+		#{ownerEmail,jdbcType=VARCHAR},
+		#{applicantName,jdbcType=VARCHAR},
+		#{applicantIdNo,jdbcType=VARCHAR},
+		#{applicantMobile,jdbcType=VARCHAR},
+		#{applicantEmail,jdbcType=VARCHAR},
+		#{insuredName,jdbcType=VARCHAR},
+		#{insuredIdNo,jdbcType=VARCHAR},
+		#{insuredMobile,jdbcType=VARCHAR},
+		#{insuredEmail,jdbcType=VARCHAR},
+		#{vehicleId,jdbcType=VARCHAR},
+		#{vehicleModelName,jdbcType=VARCHAR},
+		#{vehicleFrameNo,jdbcType=VARCHAR},
+		#{engineNo,jdbcType=VARCHAR},
+		#{registerDate,jdbcType=TIMESTAMP},
+		#{specialCarFlag,jdbcType=VARCHAR},
+		#{specialCarDate,jdbcType=TIMESTAMP})
+	</insert>
+</mapper>

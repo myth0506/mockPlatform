@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+<queryInfo>
+	<err_msg>${data.errMsg!''}</err_msg>
+	<retcode>${data.retCode!''}</retcode>
+	<#if data.gameUserId?exists>
+	<game_userid>${data.gameUserId!''}</game_userid>
+	</#if>
+	<#if data.userName?exists>
+	<username>${data.userName!''}</username>
+	</#if>
+</queryInfo>

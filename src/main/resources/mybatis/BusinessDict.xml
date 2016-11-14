@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="BusinessDict">
+	<resultMap id="resultMap" type="com.mockCommon.model.web.BusinessDict">
+		<result property="id" column="id"></result>
+		<result property="businessName" column="business_name"></result>
+		<result property="type" column="type"></result>
+		<result property="businessCode" column="business_code"></result>
+	</resultMap>
+	
+	<insert id="insertBusiDict" parameterType="com.mockCommon.model.web.BusinessDict">
+		insert into insr_business_dict(id, business_name, type, business_code)
+			values(
+				#{id, jdbcType=VARCHAR},
+				#{business_name, jdbcType=VARCHAR},
+				#{type, jdbcType=DECIMAL},
+				#{businessCode, jdbcType=VARCHAR}
+			)
+	</insert>
+	
+	<insert id="insertSunshineBusiDict" parameterType="com.mockCommon.model.web.BusinessDict">
+		insert into sunshine_business_dict(id, business_name, type, business_code)
+			values(
+				#{id, jdbcType=DECIMAL},
+				#{business_name, jdbcType=VARCHAR},
+				#{type, jdbcType=DECIMAL},
+				#{businessCode, jdbcType=VARCHAR}
+			)
+	</insert>
+	
+	<insert id="insertYouBiBusiDict" parameterType="com.mockCommon.model.web.BusinessDict">
+		insert into youbi_business_dict(id, business_name, type, business_code)
+			values(
+				#{id, jdbcType=VARCHAR},
+				#{business_name, jdbcType=VARCHAR},
+				#{type, jdbcType=DECIMAL},
+				#{businessCode, jdbcType=VARCHAR}
+			)
+	</insert>
+	
+	<select id="queryBusiDict" parameterType="com.mockCommon.model.web.BusinessDict" resultMap="resultMap">
+		select * from insr_business_dict t where t.business_code = #{businessCode}
+	</select>
+	
+	<select id="querySunshineBusiDict" parameterType="com.mockCommon.model.web.BusinessDict" resultMap="resultMap">
+		select * from sunshine_business_dict t where t.business_code = #{businessCode}
+	</select>
+	
+	<select id="queryYouBiBusiDict" parameterType="com.mockCommon.model.web.BusinessDict" resultMap="resultMap">
+		select * from youbi_business_dict t where t.business_code = #{businessCode}
+	</select>
+	
+	<select id="queryAllBusiDict" resultMap="resultMap">
+		select * from insr_business_dict order by business_code asc
+	</select>
+	
+	<select id="queryAllSunshineBusiDict" resultMap="resultMap">
+		select * from sunshine_business_dict order by business_code asc
+	</select>
+	
+	<select id="queryAllYouBiBusiDict" resultMap="resultMap">
+		select * from youbi_business_dict t where t.status = 1 order by business_code asc
+	</select>
+</mapper>

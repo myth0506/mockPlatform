@@ -1,0 +1,115 @@
+<Response>
+	<TagsList>
+		<Tags type="vehicleInfo">
+			<Tag>
+				<Definition name="type">hidden</Definition>
+				<Definition name="key">isOcr</Definition>
+				<Definition name="label">是否使用OCR</Definition>
+				<Definition name="value">${data.isOcr!""}</Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">text</Definition>
+				<Definition name="key">vehicleFrameNo</Definition>
+				<Definition name="label">车架号</Definition>
+				<Definition name="value">${data.vehicleFrameNo!""}</Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">text</Definition>
+				<Definition name="key">vehicleModelName</Definition>
+				<Definition name="label">品牌型号</Definition>
+				<Definition name="value">${data.vehicleModelName!""}</Definition>
+				<Definition name="dataUrl"><![CDATA[http://1.202.156.227:7002/Partner/netVehicleModel.action]]></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">hidden</Definition>
+				<Definition name="key">vehicleId</Definition>
+				<Definition name="label">车辆代码</Definition>
+				<Definition name="value">${data.vehicleId!""}</Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">text</Definition>
+				<Definition name="key">engineNo</Definition>
+				<Definition name="label">发动机号</Definition>
+				<Definition name="value">${data.engineNo!""}</Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">select</Definition>
+				<Definition name="key">seats</Definition>
+				<Definition name="label">座位数</Definition>
+				<Definition name="value">5</Definition>
+				<Definition name="data"><![CDATA[2:2;3:3;4:4;5:5;6:6;7:7;8:8;9:9;10:10;11:11]]></Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+				<Definition name="premium"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">date</Definition>
+				<Definition name="key">firstRegisterDate</Definition>
+				<Definition name="label">注册登记日期</Definition>
+				<Definition name="value">${(data.registerDate?string("yyyy-MM-dd"))!''}</Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">radio</Definition>
+				<Definition name="key">specialCarFlag</Definition>
+				<Definition name="label">是否过户车：</Definition>
+				<Definition name="value">${data.specialCarFlag!""}</Definition>
+				<Definition name="data"><![CDATA[是:1;否:0]]></Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">date</Definition>
+				<Definition name="label">过户日期</Definition>
+				<Definition name="key">specialCarDate</Definition>
+				<Definition name="value">${(data.specialCarDate?string("yyyy-MM-dd"))!''}</Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">text</Definition>
+				<Definition name="key">ownerName</Definition>
+				<Definition name="label">车主</Definition>
+				<Definition name="value">${data.ownerName!""}</Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+				<Definition name="type">text</Definition>
+				<Definition name="key">ownerIdNo</Definition>
+				<Definition name="label">身份证号码</Definition>
+				<Definition name="value">${data.ownerIdNo!""}</Definition>
+				<Definition name="dataUrl"></Definition>
+				<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+			<Definition name="type">radio</Definition>
+			<Definition name="key">ifLoan</Definition>
+			<Definition name="label">是否贷款车：</Definition>
+			<Definition name="value">0</Definition>
+			<Definition name="data"><![CDATA[是:1;否:0]]>
+			</Definition><Definition name="dataUrl"></Definition>
+			<Definition name="checkUrl"></Definition>
+			</Tag>
+			<Tag>
+			<Definition name="type">select</Definition>
+			<Definition name="label">第一受益人：</Definition>
+			<Definition name="key">firstBenefitPeople</Definition>
+			<Definition name="value">${data.firstBenefitPeople!""}</Definition>
+			<Definition name="data">
+			<![CDATA[中信微众银行:中信微众银行;百度银行:百度银行;广发银行:广发银行;北京银行:北京银行;光大银行:光大银行]]>
+			</Definition>
+			</Tag>
+			</Tags>
+			</TagsList>
+			</Response>

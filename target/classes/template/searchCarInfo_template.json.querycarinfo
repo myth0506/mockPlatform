@@ -1,0 +1,484 @@
+{
+    "flowId": "${data.flowId!""}",
+    "resultCode": "${data.resultCode!""}",
+    "insured": [
+        {
+            "name": "insured.name",
+            "text": "被保人姓名",
+            "value": "${data.insuredPersonInfo.personName!""}",
+            "type": "text",
+            "regex": "^(?:[4e00-9fa53400-4db59fa6-9fbbf900-FA6AE815-E864·]|[a-zA-Zs]){1,40}$"
+        },
+        {
+            "name": "insured.idType",
+            "text": "证件类型",
+            <#if data.insuredPersonInfo.personIdType == 0>
+    		"value": "01",
+    		<#elseif data.insuredPersonInfo.personIdType == 1>
+    		"value": "02",
+    		<#elseif data.insuredPersonInfo.personIdType == 2>
+    		"value": "03",
+    		<#elseif data.insuredPersonInfo.personIdType == 3>
+    		"value": "04",
+    		<#elseif data.insuredPersonInfo.personIdType == 4>
+    		"value": "05",
+    		<#elseif data.insuredPersonInfo.personIdType == 5>
+    		"value": "06",
+    		<#else>
+    		"value": "",
+			</#if>
+            "type": "select",
+            "option": [
+                {
+                    "text": "居民身份证",
+                    "value": "01"
+                },
+                {
+                    "text": "护照",
+                    "value": "02"
+                },
+                {
+                    "text": "军官证",
+                    "value": "03"
+                },
+                {
+                    "text": "驾驶证",
+                    "value": "05"
+                },
+                {
+                    "text": "港澳回乡证或台胞证",
+                    "value": "06"
+                }
+            ],
+            "regex": "^01|02|03|05|06$"
+        },
+        {
+            "name": "insured.idNo",
+            "text": "证件号码",
+            "value": "${data.insuredPersonInfo.personIdNo!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "insured.birthday",
+            "text": "生日",
+            "value": "${(data.insuredPersonInfo.personBirthday?string("yyyy-MM-dd"))!''}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "name": "insured.gender",
+            "text": "性别",
+            "value": "${data.insuredPersonInfo.personGender!""}",
+            "type": "radio",
+            "option": [
+                {
+                    "text": "男",
+                    "value": "M"
+                },
+                {
+                    "text": "女",
+                    "value": "F"
+                }
+            ],
+            "regex": "^[MF]$"
+        },
+        {
+            "name": "insured.mobile",
+            "text": "手机号",
+            "value": "${data.insuredPersonInfo.personMobile!""}",
+            "type": "text",
+            "regex": "^((13|14|15|18)(d)(****|d{4})(d{4,5}))?$"
+        },
+        {
+            "name": "insured.email",
+            "text": "E-mail",
+            "value": "${data.insuredPersonInfo.personEmail!""}",
+            "type": "text",
+            "regex": "^[w-.]+@[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?(.[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?)*.[a-zA-Z]{2,4}$"
+        },
+        {
+            "name": "insured.provinceCode",
+            "text": "被保人省份",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "insured.cityCode",
+            "text": "被保人城市",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "insured.areaCode",
+            "text": "被保人区县",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "insured.address",
+            "text": "被保人地址",
+            "value": "${data.insuredPersonInfo.personAddress!""}",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        }
+    ],
+    "tjTax": [
+        {}
+    ],
+    "vehicle": [
+        {
+            "name": "vehicle.registerDate",
+            "text": "车辆初登日期",
+            "value": "${data.vehicleInfo.vehicleRegisterDate!""}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "name": "vehicle.frameNo",
+            "text": "车架号",
+            "value": "${data.vehicleInfo.vehicleFrameNo!""}",
+            "type": "text",
+            "regex": "^[4e00-9fa5a-zA-Z0-9*][a-zA-Z0-9*]{3,31}$"
+        },
+        {
+            "name": "vehicle.engineNo",
+            "text": "发动机号",
+            "value": "${data.vehicleInfo.vehicleEngineNo!""}",
+            "type": "text",
+            "regex": "^[^4e00-9fa5]{4,21}$"
+        },
+        {
+            "name": "vehicle.model",
+            "text": "车型号",
+            "value": "${data.vehicleInfo.vehicleModel!""}",
+            "type": "text",
+            "regex": "^[^4e00-9fa5]{1,64}$"
+        },
+        {
+            "name": "vehicle.modelName",
+            "text": "品牌型号",
+            "value": "${data.vehicleInfo.vehicleModelName!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "vehicle.vehicleId",
+            "text": "配置型号",
+            "value": "${data.vehicleInfo.vehicleVehicleId!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "vehicleVo.brandName",
+            "text": "品牌名称",
+            "value": "",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "vehicleVo.description",
+            "text": "车型描述",
+            "value": "",
+            "type": "text",
+            "regex": ""
+        },
+        {}
+    ],
+    "applicant": [
+        {
+            "name": "applicant.name",
+            "text": "姓名",
+            "value": "${data.applicantPersonInfo.personName!""}",
+            "type": "text",
+            "regex": "^(?:[4e00-9fa53400-4db59fa6-9fbbf900-FA6AE815-E864·]|[a-zA-Zs]){1,40}$"
+        },
+        {
+            "name": "applicant.idType",
+            "text": "证件类型",
+            <#if data.applicantPersonInfo.personIdType == 0>
+    		"value": "01",
+    		<#elseif data.applicantPersonInfo.personIdType == 1>
+    		"value": "02",
+    		<#elseif data.applicantPersonInfo.personIdType == 2>
+    		"value": "03",
+    		<#elseif data.applicantPersonInfo.personIdType == 3>
+    		"value": "04",
+    		<#elseif data.applicantPersonInfo.personIdType == 4>
+    		"value": "05",
+    		<#elseif data.applicantPersonInfo.personIdType == 5>
+    		"value": "06",
+    		<#else>
+    		"value": "",
+			</#if>
+            "type": "select",
+            "option": [
+                {
+                    "text": "居民身份证",
+                    "value": "01"
+                },
+                {
+                    "text": "护照",
+                    "value": "02"
+                },
+                {
+                    "text": "军官证",
+                    "value": "03"
+                },
+                {
+                    "text": "驾驶证",
+                    "value": "05"
+                },
+                {
+                    "text": "港澳回乡证或台胞证",
+                    "value": "06"
+                }
+            ],
+            "regex": "^01|02|03|05|06$"
+        },
+        {
+            "name": "applicant.idNo",
+            "text": "证件号码",
+            "value": "${data.applicantPersonInfo.personIdNo!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "applicant.birthday",
+            "text": "生日",
+            "value": "${(data.applicantPersonInfo.personBirthday?string("yyyy-MM-dd"))!''}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "name": "applicant.gender",
+            "text": "性别",
+            "value": "${data.applicantPersonInfo.personGender!""}",
+            "type": "radio",
+            "option": [
+                {
+                    "text": "男",
+                    "value": "M"
+                },
+                {
+                    "text": "女",
+                    "value": "F"
+                }
+            ],
+            "regex": "^[MF]$"
+        },
+        {
+            "name": "applicant.mobile",
+            "text": "手机",
+            "value": "${data.applicantPersonInfo.personMobile!""}",
+            "type": "text",
+            "regex": "^((13|14|15|18)(d)(****|d{4})(d{4,5}))?$"
+        },
+        {
+            "name": "applicant.email",
+            "text": "E-mail",
+            "value": "${data.applicantPersonInfo.personEmail!""}",
+            "type": "text",
+            "regex": "^[w-.]+@[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?(.[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?)*.[a-zA-Z]{2,4}$"
+        },
+        {
+            "name": "applicant.provinceCode",
+            "text": "投保人省份",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "applicant.cityCode",
+            "text": "投保人城市",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "applicant.areaCode",
+            "text": "投保人区县",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "applicant.address",
+            "text": "投保人地址",
+            "value": "${data.applicantPersonInfo.personAddress!""}",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        }
+    ],
+    "loanCar": [],
+    "register": [
+        {
+            "name": "register.name",
+            "text": "车主姓名",
+            "value": "${data.registerPersonInfo.personName!""}",
+            "type": "text",
+            "regex": "^(?:[4e00-9fa53400-4db59fa6-9fbbf900-FA6AE815-E864·]|[a-zA-Zs]){1,40}$"
+        },
+        {
+            "name": "register.idType",
+            "text": "证件类型",
+            <#if data.registerPersonInfo.personIdType == 0>
+    		"value": "01",
+    		<#elseif data.registerPersonInfo.personIdType == 1>
+    		"value": "02",
+    		<#elseif data.registerPersonInfo.personIdType == 2>
+    		"value": "03",
+    		<#elseif data.registerPersonInfo.personIdType == 3>
+    		"value": "04",
+    		<#elseif data.registerPersonInfo.personIdType == 4>
+    		"value": "05",
+    		<#elseif data.registerPersonInfo.personIdType == 5>
+    		"value": "06",
+    		<#else>
+    		"value": "",
+			</#if>
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                },
+                {
+                    "text": "居民身份证",
+                    "value": "01"
+                },
+                {
+                    "text": "护照",
+                    "value": "02"
+                },
+                {
+                    "text": "军官证",
+                    "value": "03"
+                },
+                {
+                    "text": "驾驶证",
+                    "value": "05"
+                },
+                {
+                    "text": "港澳回乡证或台胞证",
+                    "value": "06"
+                }
+            ],
+            "regex": "^01|02|03|05|06$"
+        },
+        {
+            "name": "register.idNo",
+            "text": "证件号码",
+            "value": "${data.registerPersonInfo.personIdNo!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "register.birthday",
+            "text": "生日",
+            "value": "${(data.registerPersonInfo.personBirthday?string("yyyy-MM-dd"))!''}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "name": "register.gender",
+            "text": "性别",
+            "value": "${data.registerPersonInfo.personGender!""}",
+            "type": "radio",
+            "option": [
+                {
+                    "text": "男",
+                    "value": "M"
+                },
+                {
+                    "text": "女",
+                    "value": "F"
+                }
+            ],
+            "regex": "^[MF]$"
+        }
+    ],
+    "q2queryInfo": [],
+    "forceInfo": [
+        {
+            "resultCode": "C0000",
+            "message": ""
+        }
+    ],
+    "bizInfo": [
+        {},
+        {
+            "name": "bizInfo.specialCarFlag",
+            "text": "是否为过户车",
+            "value": "${data.vehicleInfo.vehicleSpecialCarFlag!""}",
+            "type": "radio",
+            "option": [
+                {
+                    "text": "是",
+                    "value": "1"
+                },
+                {
+                    "text": "否",
+                    "value": "0"
+                }
+            ],
+            "regex": "^0|1$"
+        },
+        {
+            "name": "bizInfo.specialCarDate",
+            "text": "过户日期",
+            "value": "${data.vehicleInfo.vehicleSpecialCarDate!""}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        }
+    ],
+    "switches": {
+        "isUseTaxPrice": "false",
+        "isUpGradePMhasData": "0",
+        "renewalConfirm": "${data.renewalConfirm!""}",
+        "isNpsFlow": "${data.isNpsFlow!"false"}"
+    }
+}

@@ -1,0 +1,20 @@
+		<Response>
+			<Order>
+				<PayAmount>${data.payAmount!''}</PayAmount>
+				<PayTime>${data.payTime!''}</PayTime>
+				<TBOrderId>${data.tBOrderId!''}</TBOrderId>
+				<PayNo></PayNo>
+				<SubOrderList>
+					<SubOrder type="biz">
+						<TBOrderId>${data.tBOrderId!''}</TBOrderId>
+						<ProposalNo>${data.bizProposalNo!''}</ProposalNo>
+						<PolicyNo>${data.bizPolicyNo!''}</PolicyNo>
+					</SubOrder>
+					<SubOrder type="force">
+						<TBOrderId>${data.tBOrderId!''}</TBOrderId>
+						<ProposalNo>${data.forceProposalNo!''}</ProposalNo>
+						<PolicyNo>${data.forcePolicyNo!''}</PolicyNo>
+					</SubOrder>
+				</SubOrderList>
+			</Order>
+		</Response>

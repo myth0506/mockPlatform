@@ -1,0 +1,818 @@
+{
+    "flowId": "${data.flowId!""}",
+    "resultCode": "${data.resultCode!""}",
+    "insured": [
+        {
+            "name": "insured.name",
+            "text": "被保人姓名",
+            "value": "${data.searchCarInfoMockModel.insuredPersonInfo.personName!""}",
+            "type": "text",
+            "regex": "^(?:[4e00-9fa53400-4db59fa6-9fbbf900-FA6AE815-E864·]|[a-zA-Zs]){1,40}$"
+        },
+        {
+            "name": "insured.idType",
+            "text": "证件类型",
+            <#if data.searchCarInfoMockModel.insuredPersonInfo.personIdType == 0>
+    		"value": "01",
+    		<#elseif data.searchCarInfoMockModel.insuredPersonInfo.personIdType == 1>
+    		"value": "02",
+    		<#elseif data.searchCarInfoMockModel.insuredPersonInfo.personIdType == 2>
+    		"value": "03",
+    		<#elseif data.searchCarInfoMockModel.insuredPersonInfo.personIdType == 3>
+    		"value": "04",
+    		<#elseif data.searchCarInfoMockModel.insuredPersonInfo.personIdType == 4>
+    		"value": "05",
+    		<#elseif data.searchCarInfoMockModel.insuredPersonInfo.personIdType == 5>
+    		"value": "06",
+    		<#else>
+    		"value": "",
+			</#if>
+            "type": "select",
+            "option": [
+                {
+                    "text": "居民身份证",
+                    "value": "01"
+                },
+                {
+                    "text": "护照",
+                    "value": "02"
+                },
+                {
+                    "text": "军官证",
+                    "value": "03"
+                },
+                {
+                    "text": "驾驶证",
+                    "value": "05"
+                },
+                {
+                    "text": "港澳回乡证或台胞证",
+                    "value": "06"
+                }
+            ],
+            "regex": "^01|02|03|05|06$"
+        },
+        {
+            "name": "insured.idNo",
+            "text": "证件号码",
+            "value": "${data.searchCarInfoMockModel.insuredPersonInfo.personIdNo!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "insured.birthday",
+            "text": "生日",
+            "value": "${(data.searchCarInfoMockModel.insuredPersonInfo.personBirthday?string("yyyy-MM-dd"))!""}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "name": "insured.gender",
+            "text": "性别",
+            "value": "${data.searchCarInfoMockModel.insuredPersonInfo.personGender!""}",
+            "type": "radio",
+            "option": [
+                {
+                    "text": "男",
+                    "value": "M"
+                },
+                {
+                    "text": "女",
+                    "value": "F"
+                }
+            ],
+            "regex": "^[MF]$"
+        },
+        {
+            "name": "insured.mobile",
+            "text": "手机号",
+            "value": "${data.searchCarInfoMockModel.insuredPersonInfo.personMobile!""}",
+            "type": "text",
+            "regex": "^((13|14|15|18)(d)(****|d{4})(d{4,5}))?$"
+        },
+        {
+            "name": "insured.email",
+            "text": "E-mail",
+            "value": "${data.searchCarInfoMockModel.insuredPersonInfo.personEmail!""}",
+            "type": "text",
+            "regex": "^[w-.]+@[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?(.[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?)*.[a-zA-Z]{2,4}$"
+        },
+        {
+            "name": "insured.provinceCode",
+            "text": "被保人省份",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "insured.cityCode",
+            "text": "被保人城市",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "insured.areaCode",
+            "text": "被保人区县",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "insured.address",
+            "text": "被保人地址",
+            "value": "${data.searchCarInfoMockModel.insuredPersonInfo.personAddress!""}",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        }
+    ],
+    "q2Info": [],
+    "address": [
+        {
+            "name": "address.name",
+            "text": "收单人姓名",
+            "value": "",
+            "type": "text"
+        },
+        {
+            "name": "address.mobile",
+            "text": "收单人手机",
+            "value": "",
+            "type": "text"
+        },
+        {
+            "name": "department.provinceName",
+            "text": "省份",
+            "value": "440000",
+            "type": "select",
+            "option": [
+                {
+                    "text": "广东省",
+                    "value": "440000"
+                }
+            ]
+        },
+        {
+            "name": "department.cityName",
+            "text": "城市",
+            "value": "440300",
+            "type": "select",
+            "option": [
+                {
+                    "text": "深圳市",
+                    "value": "440300"
+                }
+            ]
+        },
+        {
+            "name": "department.townCityCode",
+            "text": "县级市",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                },
+                {
+                    "text": "罗湖区",
+                    "value": "440303"
+                },
+                {
+                    "text": "福田区",
+                    "value": "440304"
+                },
+                {
+                    "text": "南山区",
+                    "value": "440305"
+                },
+                {
+                    "text": "盐田区",
+                    "value": "440308"
+                },
+                {
+                    "text": "龙岗区",
+                    "value": "440307"
+                }
+            ]
+        },
+        {
+            "name": "address.detail",
+            "text": "收单人地址",
+            "value": "",
+            "type": "text"
+        }
+    ],
+    "tjTax": [
+        {}
+    ],
+    "applicant": [
+        {
+            "name": "applicant.name",
+            "text": "姓名",
+            "value": "${data.searchCarInfoMockModel.applicantPersonInfo.personName!""}",
+            "type": "text",
+            "regex": "^(?:[4e00-9fa53400-4db59fa6-9fbbf900-FA6AE815-E864·]|[a-zA-Zs]){1,40}$"
+        },
+        {
+            "name": "applicant.idType",
+            "text": "证件类型",
+            <#if data.searchCarInfoMockModel.applicantPersonInfo.personIdType == 0>
+    		"value": "01",
+    		<#elseif data.searchCarInfoMockModel.applicantPersonInfo.personIdType == 1>
+    		"value": "02",
+    		<#elseif data.searchCarInfoMockModel.applicantPersonInfo.personIdType == 2>
+    		"value": "03",
+    		<#elseif data.searchCarInfoMockModel.applicantPersonInfo.personIdType == 3>
+    		"value": "04",
+    		<#elseif data.searchCarInfoMockModel.applicantPersonInfo.personIdType == 4>
+    		"value": "05",
+    		<#elseif data.searchCarInfoMockModel.applicantPersonInfo.personIdType == 5>
+    		"value": "06",
+    		<#else>
+    		"value": "",
+			</#if>
+            "type": "select",
+            "option": [
+                {
+                    "text": "居民身份证",
+                    "value": "01"
+                },
+                {
+                    "text": "护照",
+                    "value": "02"
+                },
+                {
+                    "text": "军官证",
+                    "value": "03"
+                },
+                {
+                    "text": "驾驶证",
+                    "value": "05"
+                },
+                {
+                    "text": "港澳回乡证或台胞证",
+                    "value": "06"
+                }
+            ],
+            "regex": "^01|02|03|05|06$"
+        },
+        {
+            "name": "applicant.idNo",
+            "text": "证件号码",
+            "value": "${data.searchCarInfoMockModel.applicantPersonInfo.personIdNo!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "applicant.birthday",
+            "text": "生日",
+            "value": "${data.searchCarInfoMockModel.applicantPersonInfo.personBirthday!""}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "name": "applicant.gender",
+            "text": "性别",
+            "value": "${data.searchCarInfoMockModel.applicantPersonInfo.personGender!""}",
+            "type": "radio",
+            "option": [
+                {
+                    "text": "男",
+                    "value": "M"
+                },
+                {
+                    "text": "女",
+                    "value": "F"
+                }
+            ],
+            "regex": "^[MF]$"
+        },
+        {
+            "name": "applicant.mobile",
+            "text": "手机",
+            "value": "${data.searchCarInfoMockModel.applicantPersonInfo.personMobile!""}",
+            "type": "text",
+            "regex": "^((13|14|15|18)(d)(****|d{4})(d{4,5}))?$"
+        },
+        {
+            "name": "applicant.email",
+            "text": "E-mail",
+            "value": "${data.searchCarInfoMockModel.applicantPersonInfo.personEmail!""}",
+            "type": "text",
+            "regex": "^[w-.]+@[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?(.[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?)*.[a-zA-Z]{2,4}$"
+        },
+        {
+            "name": "applicant.provinceCode",
+            "text": "投保人省份",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "applicant.cityCode",
+            "text": "投保人城市",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "applicant.areaCode",
+            "text": "投保人区县",
+            "value": "",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "name": "applicant.address",
+            "text": "投保人地址",
+            "value": "${data.searchCarInfoMockModel.applicantPersonInfo.personAddress!""}",
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                }
+            ]
+        }
+    ],
+    "checkvehicle": {
+        "isNeed": "false",
+        "message": "是否需要验车"
+    },
+    "register": [
+         {
+            "name": "register.name",
+            "text": "车主姓名",
+            "value": "${data.searchCarInfoMockModel.registerPersonInfo.personName!""}",
+            "type": "text",
+            "regex": "^(?:[4e00-9fa53400-4db59fa6-9fbbf900-FA6AE815-E864·]|[a-zA-Zs]){1,40}$"
+        },
+        {
+            "name": "register.idType",
+            "text": "证件类型",
+            <#if data.searchCarInfoMockModel.registerPersonInfo.personIdType == 0>
+    		"value": "01",
+    		<#elseif data.searchCarInfoMockModel.registerPersonInfo.personIdType == 1>
+    		"value": "02",
+    		<#elseif data.searchCarInfoMockModel.registerPersonInfo.personIdType == 2>
+    		"value": "03",
+    		<#elseif data.searchCarInfoMockModel.registerPersonInfo.personIdType == 3>
+    		"value": "04",
+    		<#elseif data.searchCarInfoMockModel.registerPersonInfo.personIdType == 4>
+    		"value": "05",
+    		<#elseif data.searchCarInfoMockModel.registerPersonInfo.personIdType == 5>
+    		"value": "06",
+    		<#else>
+    		"value": "",
+			</#if>
+            "type": "select",
+            "option": [
+                {
+                    "text": "请选择",
+                    "value": ""
+                },
+                {
+                    "text": "居民身份证",
+                    "value": "01"
+                },
+                {
+                    "text": "护照",
+                    "value": "02"
+                },
+                {
+                    "text": "军官证",
+                    "value": "03"
+                },
+                {
+                    "text": "驾驶证",
+                    "value": "05"
+                },
+                {
+                    "text": "港澳回乡证或台胞证",
+                    "value": "06"
+                }
+            ],
+            "regex": "^01|02|03|05|06$"
+        },
+        {
+            "name": "register.idNo",
+            "text": "证件号码",
+            "value": "${data.searchCarInfoMockModel.registerPersonInfo.personIdNo!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "register.birthday",
+            "text": "生日",
+            "value": "${data.searchCarInfoMockModel.registerPersonInfo.personBirthday!""}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "name": "register.gender",
+            "text": "性别",
+            "value": "${data.searchCarInfoMockModel.registerPersonInfo.personGender!""}",
+            "type": "radio",
+            "option": [
+                {
+                    "text": "男",
+                    "value": "M"
+                },
+                {
+                    "text": "女",
+                    "value": "F"
+                }
+            ],
+            "regex": "^[MF]$"
+        }
+    ],
+    "orderInfo": {
+        "vehicle": {
+            "frameNo": "${data.searchCarInfoMockModel.vehicleInfo.vehicleFrameNo!""}",
+            "engineNo": "${data.searchCarInfoMockModel.vehicleInfo.vehicleEngineNo!""}",
+            "licenseNo": "粤B*",
+            "modelName": "捷达FV7160ATF E3",
+            "description": "自动档 舒适型",
+            "seat": "5",
+            "registerDate": "${data.searchCarInfoMockModel.vehicleInfo.vehicleRegisterDate!""}",
+            "q2InputType": ""
+        },
+        "insured": {
+            "name": "test",
+            "idNo": "",
+            "email": "",
+            "mobile": "",
+            "birthday": "",
+            "gender": "",
+            "idType": ""
+        },
+        "register": {
+            "name": "test",
+            "idNo": "",
+            "birthday": "",
+            "gender": "M",
+            "idType": ""
+        },
+        "bizConfig": {
+            "beginDate": "${data.shyxBeginDate!""}",
+            "endDate": "2016-10-10"
+			<#assign index = 1>
+			<#if data.baoJiaConfig.amount01 != "-1">
+				<#if index != 0>,</#if>
+				"amount01Default": "${data.iniMap['defaultAmount01']!""}",
+				"amount01Max": "${data.iniMap['heighAmount01']!""}",
+				"amount01Min": "${data.iniMap['lowAmount01']!""}",
+				"amount01": "${data.baoJiaConfig.amount01!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount02 != "-1">
+				<#if index != 0>,</#if>
+				"amount02": "${data.baoJiaConfig.amount02!""}"
+				<#assign index = index + 1>
+			</#if>
+            <#if data.baoJiaConfig.amount03 != "-1">
+				<#if index != 0>,</#if>
+				"amount03": "${data.baoJiaConfig.amount03!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount04 != "-1">
+				<#if index != 0>,</#if>
+				"amount04": "${data.baoJiaConfig.amount04!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount05 != "-1">
+				<#if index != 0>,</#if>
+				"amount05": "${data.baoJiaConfig.amount05!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount08 != "-1">
+				<#if index != 0>,</#if>
+				"amount08": "${data.baoJiaConfig.amount08!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount17 != "-1">
+				<#if index != 0>,</#if>
+				"amount17": "${data.baoJiaConfig.amount17!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount18 != "-1">
+				<#if index != 0>,</#if>
+				"amount18": "${data.baoJiaConfig.amount18!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount27 != "-1">
+				<#if index != 0>,</#if>
+				"amount27": "${data.baoJiaConfig.amount27!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount28 != "-1">
+				<#if index != 0>,</#if>
+				"amount28": "${data.baoJiaConfig.amount28!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount48 != "-1">
+				<#if index != 0>,</#if>
+				"amount48": "${data.baoJiaConfig.amount48!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount49 != "-1">
+				<#if index != 0>,</#if>
+				"amount49": "${data.baoJiaConfig.amount49!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount50 != "-1">
+				<#if index != 0>,</#if>
+				"amount50": "${data.baoJiaConfig.amount50!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount41 != "-1">
+				<#if index != 0>,</#if>
+				"amount41": "${data.baoJiaConfig.amount41!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount57 != "-1">
+				<#if index != 0>,</#if>
+				"amount57": "${data.baoJiaConfig.amount57!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount59 != "-1">
+				<#if index != 0>,</#if>
+				"amount59": "${data.baoJiaConfig.amount59!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount63 != "-1">
+				<#if index != 0>,</#if>
+				"amount63": "${data.baoJiaConfig.amount63!""}"
+				<#assign index = index + 1>
+			</#if>
+        },
+        "bizResult": {
+ 			<#assign index = 0>
+			<#assign totalBaoFei = 0>
+			<#if data.baoJiaConfig.amount01 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount01=="0">
+				"premium01": "0"
+				<#else>
+				"premium01": "${data.iniMap['amount01']!""}"
+				<#assign p01 = data.iniMap['amount01']?number>
+				<#assign totalBaoFei = totalBaoFei + p01>
+				</#if>
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount02 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount02=="0">
+				"premium02": "0"
+				<#else>
+				"premium02": "${data.dynamicIniMap['amount02'].baoFei!""}"
+				<#assign p02 = data.dynamicIniMap['amount02'].baoFei?number>
+				<#assign totalBaoFei = totalBaoFei + p02>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount03 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount03=="0">
+				"premium03": "0"
+				<#else>
+				"premium03": "${data.iniMap['amount03']!""}"
+				<#assign p03 = data.iniMap['amount03']?number>
+				<#assign totalBaoFei = totalBaoFei + p03>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount04 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount04=="0">
+				"premium04": "0"
+				<#else>
+				"premium04": "${data.dynamicIniMap['amount04'].baoFei!""}"
+				<#assign p04 = data.dynamicIniMap['amount04'].baoFei?number>
+				<#assign totalBaoFei = totalBaoFei + p04>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount05 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount05=="0">
+				"premium05": "0"
+				<#else>
+				"premium05": "${data.dynamicIniMap['amount05'].baoFei!""}"
+				<#assign p05 = data.dynamicIniMap['amount05'].baoFei?number>
+				<#assign totalBaoFei = totalBaoFei + p05>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount08 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount08=="0">
+				"premium08": "0"
+				</#if>
+				<#if data.baoJiaConfig.amount08=="1">
+				"premium08": "${data.iniMap['gcAmount08']!""}"
+				<#assign p08gc = data.iniMap['gcAmount08']?number>
+				<#assign totalBaoFei = totalBaoFei + p08gc>
+				</#if>
+				<#if data.baoJiaConfig.amount08=="2">
+				"premium08": "${data.iniMap['jkAmount08']!""}"
+				<#assign p08jk = data.iniMap['jkAmount08']?number>
+				<#assign totalBaoFei = totalBaoFei + p08jk>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount17 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount17=="0">
+				"premium17": "0"
+				<#else>
+				"premium17": "${data.dynamicIniMap['amount17'].baoFei!""}"
+				<#assign p17 = data.dynamicIniMap['amount17'].baoFei?number>
+				<#assign totalBaoFei = totalBaoFei + p17>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount18 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount18=="0">
+				"premium18": "0"
+				<#else>
+				"premium18": "${data.iniMap['amount18']!""}"
+				<#assign p18 = data.iniMap['amount18']?number>
+				<#assign totalBaoFei = totalBaoFei + p18>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount27 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount27=="0">
+				"premium27": "0"
+				<#else>
+				"premium27": "${data.iniMap['amount27']!""}"
+				<#assign p27 = data.iniMap['amount27']?number>
+				<#assign totalBaoFei = totalBaoFei + p27>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount28 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount28=="0">
+				"premium28": "0"
+				<#else>
+				"premium28": "${data.iniMap['amount28']!""}"
+				<#assign p28 = data.iniMap['amount28']?number>
+				<#assign totalBaoFei = totalBaoFei + p28>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount48 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount48=="0">
+				"premium48": "0"
+				<#else>
+				"premium48": "${data.iniMap['amount48']!""}"
+				<#assign p48 = data.iniMap['amount48']?number>
+				<#assign totalBaoFei = totalBaoFei + p48>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount49 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount49=="0">
+				"premium49": "0"
+				<#else>
+				"premium49": "${data.iniMap['amount49']!""}"
+				<#assign p49 = data.iniMap['amount49']?number>
+				<#assign totalBaoFei = totalBaoFei + p49>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount50 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount50=="0">
+				"premium50": "0"
+				<#else>
+				"premium50": "${data.iniMap['amount50']!""}"
+				<#assign p50 = data.iniMap['amount50']?number>
+				<#assign totalBaoFei = totalBaoFei + p50>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount41 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount41=="0">
+				"premium41": "0"
+				<#else>
+				"premium41": "${data.iniMap['amount41']!""}"
+				<#assign p41 = data.iniMap['amount41']?number>
+				<#assign totalBaoFei = totalBaoFei + p41>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount57 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount57=="0">
+				"premium57": "0"
+				<#else>
+				"premium57": "${data.iniMap['amount57']!""}"
+				<#assign p57 = data.iniMap['amount57']?number>
+				<#assign totalBaoFei = totalBaoFei + p57>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount59 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount59=="0">
+				"premium59": "0"
+				<#else>
+				"premium59": "${data.iniMap['amount59']!""}"
+				<#assign p59 = data.iniMap['amount59']?number>
+				<#assign totalBaoFei = totalBaoFei + p59>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount63 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount63=="0">
+				"premium63": "0"
+				<#else>
+				"premium63": "${data.iniMap['amount63']!""}"
+				<#assign p63 = data.iniMap['amount63']?number>
+				<#assign totalBaoFei = totalBaoFei + p63>
+				</#if>
+				<#assign index = index + 1>
+			</#if>
+			<#if "1"=="1">
+				<#if index != 0>,</#if>
+				<#assign originalp = data.iniMap['originalPremium']?number>
+				"totalPremium": "${totalBaoFei?c}",
+            	"originalPremium": "${data.iniMap['originalPremium']}",
+				<#assign savep = originalp - totalBaoFei>
+            	"savedPremium": "${savep?c}"
+            	<#assign index = index + 1>
+			</#if>			
+        },
+        "forceResult": {
+            "beginDate": "${data.jqxBeginDate!""}",
+            "endDate": "2016-10-10",
+            <#if data.forceFee ?? && data.taxFee ??>
+        	"forcePremium": "${data.forceFee!""}",
+        	"taxPremium": "${data.taxFee!""}",
+			<#assign force = data.forceFee?number>
+			<#assign tax = data.taxFee?number>
+			<#assign total = force + tax>
+        	"totalPremium": "${total?c}"
+        	<#else>
+        	"forcePremium": "0",
+        	"taxPremium": "0",
+        	"totalPremium": "0"
+        	</#if>
+        },
+        "floatNotice": {
+            "bizNotice": "true",
+            "forceNotice": "true",
+            "notice": "1"
+        },
+	"isNeedSmsCode":"true"
+    },
+    "otherInfo": {
+        "isApplyBiz": "${data.isApplyBiz!"false"}",
+        "isApplyForce": "${data.isApplyForce!"false"}"
+    }
+}

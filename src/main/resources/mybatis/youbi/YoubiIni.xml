@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Youbi">
+	<resultMap id="resultIni" type="com.mockCommon.model.web.BusinessIni">
+		<result property="iniName" column="ini_name"></result>
+		<result property="iniValue" column="ini_value"></result>
+		<result property="iniDesc" column="ini_desc"></result>
+	</resultMap>
+	
+	<insert id="batchInsertIni" parameterType="java.util.List">
+		insert into YOUBI_INI(ini_name, ini_value)
+		<foreach collection="list" item="ini" index="index" separator="union all">
+			select #{ini.iniName}, #{ini.iniValue} from dual
+		</foreach>
+	</insert>
+	<insert id="insertIni" parameterType="com.mockCommon.model.web.BusinessIni">
+		insert into YOUBI_INI(ini_name, ini_value, ini_desc)
+		values(#{iniName, jdbcType=VARCHAR},
+			   #{iniValue, jdbcType=VARCHAR},
+			   #{iniDesc, jdbcType=VARCHAR})
+	</insert>
+	<update id="batchUpdateIni" parameterType="java.util.List">
+		<foreach collection="list" item="ini" index="index" open="begin" close="; end;" separator=";">
+			update YOUBI_INI 
+			<set>
+				ini_value = #{ini.iniValue, jdbcType=VARCHAR}
+			</set>
+			where ini_name = #{ini.iniName, jdbcType=VARCHAR}
+		</foreach>
+	</update>
+	<update id="updateIni" parameterType="com.mockCommon.model.web.BusinessIni">
+			update YOUBI_INI 
+			<set>
+				<if test="iniValue!=null">
+				ini_value = #{iniValue, jdbcType=VARCHAR},
+				</if>
+				<if test="iniDesc!=null">
+				ini_desc = #{iniDesc, jdbcType=VARCHAR},
+				</if>
+			</set>
+			where ini_name = #{iniName, jdbcType=VARCHAR}
+	</update>
+	<update id="mergeIni" parameterType="com.mockCommon.model.web.BusinessIni">
+		merge into YOUBI_INI t
+		using (select #{iniName} as iniName from dual) t1
+		on(t.ini_name = t1.iniName)
+		when not matched then
+		insert values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="iniName!=null and iniName!=''">
+				#{iniName, jdbcType=VARCHAR},
+			</if>
+			<if test="iniValue!=null and iniValue!=''">
+				#{iniValue, jdbcType=VARCHAR},
+			</if>
+			<if test="iniDesc!=null and iniDesc!=''">
+				#{iniDesc, jdbcType=VARCHAR},
+			</if>
+		</trim>
+		when matched then 
+		update
+		<set>
+			<if test="iniValue!=null and iniValue!=''">
+				ini_value = #{iniValue, jdbcType=VARCHAR},
+			</if>
+			<if test="iniDesc!=null and iniDesc!=''">
+				ini_desc = #{iniDesc, jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ini_name = #{iniName, jdbcType=VARCHAR}
+	</update>
+	
+	<select id="queryIni" parameterType="java.lang.String" resultMap="resultIni">
+		select * from YOUBI_INI where ini_name = #{iniName}
+	</select>
+	
+	<select id="queryAllIni" resultMap="resultIni">
+		select * from YOUBI_INI
+	</select>
+</mapper>

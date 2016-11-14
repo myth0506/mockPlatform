@@ -1,0 +1,48 @@
+		<Response>
+			<TagsList>
+				<Tags>
+					<Tag>
+						<Definition name="type">label</Definition>
+						<Definition name="key">forcePremium</Definition>
+						<Definition name="label">交强险费</Definition>
+						<Definition name="value"></Definition>
+						<Definition name="premium">${data.forcePremium!""}</Definition>
+					</Tag>
+					<Tag>
+						<Definition name="type">label</Definition>
+						<Definition name="key">vehicleTaxPremium</Definition>
+						<Definition name="label">车船税费</Definition>
+						<Definition name="value"></Definition>
+						<Definition name="premium">${data.vehicleTaxPremium!""}</Definition>
+					</Tag>
+					<Tag>
+						<Definition name="type">label</Definition>
+						<Definition name="key">bizTotalPremium</Definition>
+						<Definition name="label">商业总保费</Definition>
+						<Definition name="value"></Definition>
+						<Definition name="premium">${data.bizTotalPremium!""}</Definition>
+					</Tag>
+					<Tag>
+						<Definition name="type">label</Definition>
+						<Definition name="key">totalPremium</Definition>
+						<Definition name="label">网购总价</Definition>
+						<Definition name="value"></Definition>
+						<Definition name="premium">${data.totalPremium!""}</Definition>
+					</Tag>
+				</Tags>
+			</TagsList>
+			<Order>
+				<TBOrderId>${data.tBOrderId!""}</TBOrderId>
+				<SubOrderList>
+					<SubOrder type="biz">
+						<TBOrderId>${data.tBOrderId!""}</TBOrderId>
+						<ProposalNo>${data.bizProposalNo!""}</ProposalNo>
+					</SubOrder>
+					<SubOrder type="force">
+						<TBOrderId>${data.tBOrderId!""}</TBOrderId>
+						<ProposalNo>${data.forceProposalNo!""}</ProposalNo>
+					</SubOrder>
+				</SubOrderList>
+			</Order>
+            <IsIdVerifi>${data.isIdVerifi!""}</IsIdVerifi>
+		</Response>

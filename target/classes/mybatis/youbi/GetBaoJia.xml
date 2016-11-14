@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="YouBiBaoJia">
+	
+	<resultMap id="resultMap" type="com.mockCommon.model.web.youbi.BusinessInfoModel">
+		<result property="id" column="id"></result>
+		<result property="is_checked" column="is_checked"></result>
+		<result property="business_name" column="business_name"></result>
+		<result property="baoe" column="baoe"></result>
+		<result property="baofei" column="baofei"></result>
+		<result property="is_valid" column="is_valid"></result>
+		<result property="is_vote" column="is_vote"></result>
+	</resultMap>
+	
+	<resultMap id="YouBiBaoJiaConfig" type="com.mockCommon.model.web.BusinessConfig">
+		<result property="id" column="ID"></result>
+		<result property="businessId" column="BUSINESSID"></result>
+		<result property="wenAn" column="WENAN"></result>
+		<result property="baoE" column="BAOE"></result>
+		<result property="baoFei" column="BAOFEI"></result>
+		<result property="status" column="STATUS"></result>
+		<result property="businessCode" column="BUSINESSCODE"></result>
+		<result property="isValid" column="ISVALID"></result>
+		<result property="isVote" column="ISVOTE"></result>
+	</resultMap>
+	
+	<select id="queryBaoJiaConfig" parameterType="com.mockCommon.model.web.youbi.BusinessInfoModel" resultMap="resultMap">
+		select * from YOUBI_BUSINESS_INFO 
+	</select>
+	
+	<select id="queryAllYouBiBaoJiaConfig" resultMap="YouBiBaoJiaConfig">
+		select * from YOUBI_BUSINESS_CONFIG 
+	</select>
+	
+	<select id="queryConfigByConfigId" parameterType="Map" resultMap="YouBiBaoJiaConfig">
+		select * from YOUBI_BUSINESS_CONFIG t 
+		where t.id = #{configId}
+	</select>
+	
+	<select id="queryConfigByCand" parameterType="Map" resultMap="YouBiBaoJiaConfig">
+		select * from YOUBI_BUSINESS_CONFIG t 
+		where t.BUSINESSCODE = #{businessCode} and t.BAOE = #{baoE}
+	</select>
+	
+	<select id="queryConfigList" parameterType="Map" resultMap="YouBiBaoJiaConfig">
+		select t.* from YOUBI_BUSINESS_CONFIG t, YOUBI_BUSINESS_DICT t1
+		where t.BUSINESSCODE = t1.BUSINESS_CODE
+			and t.status = '1'
+			<if test="businessCode!=null and businessCode!=''">
+				and t1.BUSINESS_CODE = #{businessCode}
+			</if>
+			<if test="baoE!=null and baoE!=''">
+				and t.BAOE = #{baoE}
+			</if>
+			order by t.ID
+	</select>
+	
+	<select id="queryConfigListByIds" parameterType="list"
+		resultMap="YouBiBaoJiaConfig">
+		SELECT T.*
+		 FROM YOUBI_BUSINESS_CONFIG T
+		<where>
+			T.ID in
+			<foreach collection="list" item="configId" open="(" separator="," close=")">
+				#{configId}
+			</foreach>
+			and T.STATUS = 1
+		</where>
+	</select>
+	
+	<insert id="insertYouBiBaoJiaConfig" parameterType="com.mockCommon.model.web.BusinessConfig">
+		insert into YOUBI_BUSINESS_CONFIG(ID,BUSINESSID, WENAN, BAOE, BAOFEI, STATUS, BUSINESSCODE, ISVALID, ISVOTE)
+		values(#{id, jdbcType=VARCHAR},
+			   #{businessId, jdbcType=VARCHAR},
+			   #{wenAn, jdbcType=VARCHAR},
+			   #{baoE, jdbcType=DECIMAL},
+			   #{baoFei, jdbcType=DECIMAL},
+			   1,
+			   #{businessCode, jdbcType=VARCHAR},
+			   #{isValid, jdbcType=DECIMAL},
+			   #{isVote, jdbcType=DECIMAL})
+	</insert>
+	
+	<update id="updateYouBiBaoJiaConfig" parameterType="com.mockCommon.model.web.BusinessConfig">
+			update YOUBI_BUSINESS_CONFIG 
+			<set>
+				<if test="businessId!=null">
+				BUSINESSID = #{businessId, jdbcType=VARCHAR},
+				</if>
+				<if test="wenAn!=null">
+				WENAN = #{wenAn, jdbcType=VARCHAR},
+				</if>
+				<if test="baoE!=null">
+				BAOE = #{baoE, jdbcType=DECIMAL},
+				</if>
+				<if test="baoFei!=null">
+				BAOFEi = #{baoFei, jdbcType=DECIMAL},
+				</if>
+				<if test="status!=null">
+				STATUS = #{status, jdbcType=DECIMAL},
+				</if>
+				<if test="businessCode!=null">
+				BUSINESSCODE = #{businessCode, jdbcType=VARCHAR},
+				</if>
+				<if test="isValid!=null">
+				ISVALID = #{isValid, jdbcType=DECIMAL},
+				</if>
+				<if test="isVote!=null">
+				ISVOTE = #{isVote, jdbcType=DECIMAL},
+				</if>
+			</set>
+			where ID = #{id, jdbcType=VARCHAR}
+	</update>
+	
+</mapper>

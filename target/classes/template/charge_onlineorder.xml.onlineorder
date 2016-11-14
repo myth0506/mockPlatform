@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK"?> 
+<orderinfo>
+    <err_msg>${data.errMsg!''}</err_msg>
+    <retcode>${data.retCode!''}</retcode>
+     	<orderid>${data.orderId!''}</orderid> 
+        <cardid>${data.cardId!''}</cardid> 
+        <cardnum>${data.cardNum!''}</cardnum> 
+        <ordercash>${data.orderCash!''}</ordercash>	
+        <cardname>${data.cardName!''}</cardname> 
+        <sporder_id>${data.sporderId!''}</sporder_id> 
+        <game_userid>${data.gameUserId!''}</game_userid>
+        <game_state>${data.gameState!''}</game_state>
+</orderinfo>

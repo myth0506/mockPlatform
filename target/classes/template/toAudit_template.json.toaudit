@@ -1,0 +1,27 @@
+{
+    "flowId": "${data.flowId!""}",
+    "resultCode": "${data.resultCode!""}",
+    "auditInfo": {
+        "resultCode": "${data.resultCode!""}",
+        "message": "${data.message!""}",
+        "biz": {
+            "premium": "${data.bizPremium!""}",
+            "applyNo": "50516003900014116879",
+            "orderNo": "${data.bizOrderNo!""}"
+        },
+        "force": {
+            "premium": "${data.jqxPremium!""}",
+            "applyNo": "50516003900014116880",
+            "orderNo": "${data.jqxOrderNo!""}"
+        },
+        "accident": []
+    },
+    "checkvehicle": {
+        "isNeed": "false",
+        "message": "是否需要验车"
+    },
+    "auditRulesCheck": {
+        "resultCode": "0",
+        "bizRuleType": ""
+    }
+}

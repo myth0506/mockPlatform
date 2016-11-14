@@ -1,0 +1,36 @@
+{
+    "flowId": "${data.flowId!""}",
+    "resultCode": "${data.resultCode!""}",
+	<#assign total = 0>
+    "forcePremium": {
+        "forceInfo.beginDate": "${data.beginDate!""}",
+        "resultCode": "C0000",
+        "message": "${data.errorMessage!""}",
+        <#if data.isApplyForce ??>
+        "isApplyForce": ${data.isApplyForce!""},
+        </#if>
+        <#if data.forceFee ?? && data.taxFee ??>
+        "forcePremium": "${data.forceFee!""}",
+        "taxPremium": "${data.taxFee!""}",
+		<#assign force = data.forceFee?number>
+		<#assign tax = data.taxFee?number>
+		<#assign total = force + tax>
+        "totalPremium": "${total?c}",
+        <#else>
+        "forcePremium": "0",
+        "taxPremium": "0",
+        "totalPremium": "0",
+        </#if>
+        "isRepForce": false,
+        "lastBeginDate": "",
+        "lastEndDate": "",
+        "tax": {
+            "curYearTax": "90",
+            "lastYearPay": "0",
+            "delayPayMoney": "0",
+            "promptText": "按国家规定须与交强险同时购买",
+            "promptRemark": "上年度未缴税、本年度已完税、减税、免税等客户暂时不能通过网上投保，如有疑问，请联系客服。",
+            "code": "1"
+        }
+    }
+}

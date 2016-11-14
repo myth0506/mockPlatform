@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Wzcx">
+
+	<resultMap id="wzcxResult" type="com.mockCommon.model.web.Wzcx">
+		<result property="id" column="id"></result>
+		<result property="api_id" column="api_id"></result>
+		<result property="resp_status" column="resp_status"></result>
+		<result property="resp_retCode" column="resp_retcode"></result>
+		<result property="resp_retDesc" column="resp_retdesc"></result>
+		<result property="resp_content" column="resp_content"></result>
+	</resultMap>
+
+	<resultMap id="wzcxInfoResult" type="com.mockCommon.model.web.WzcxInfoModel">
+		<result property="wzcx_id" column="wzcx_id"></result>
+		<result property="wzcx_car_num" column="wzcx_car_num"></result>
+		<result property="wzcx_status" column="wzcx_status"></result>
+		<result property="wzcx_sfwz" column="wzcx_sfwz"></result>
+	</resultMap>
+
+	<resultMap id="wzcxRecordResult" type="com.mockCommon.model.web.WzcxRecordModel">
+		<result property="record_id" column="record_id"></result>
+		<result property="wzcx_id" column="wzcx_id"></result>
+		<result property="record_wzsj" column="record_wzsj"></result>
+		<result property="record_wzdd" column="record_wzdd"></result>
+		<result property="record_wzyy" column="record_wzyy"></result>
+		<result property="record_kf" column="record_kf"></result>
+		<result property="record_fk" column="record_fk"></result>
+		<result property="record_wzzt" column="record_wzzt"></result>
+		<result property="record_status" column="record_status"></result>
+	</resultMap>
+
+	<update id="updateOtherStatus" parameterType="Map">
+		update
+		insr_api_response t set t.resp_status = '0'
+		where t.api_id = (select
+		t1.api_id
+		from insr_api_response t1
+		where t1.id=#{responseId,
+		jdbcType=VARCHAR})
+	</update>
+
+	<update id="updateStatus" parameterType="Map">
+		update insr_api_response
+		t set t.resp_status = '1'
+		where t.id = #{responseId, jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectWzcxStatus" parameterType="Map" resultMap="wzcxResult">
+		select t.* from insr_api_response t, insr_api t1
+		where t.api_id = t1.id
+		and t1.api_code = #{api_code, jdbcType=VARCHAR} order by t.resp_status
+		desc
+	</select>
+
+	<select id="searchWzcxById" parameterType="Map" resultMap="wzcxResult">
+		select *
+		from insr_api_response
+		where id = #{id, jdbcType=VARCHAR}
+	</select>
+
+	<select id="searchWzcxInfoModel" parameterType="Map" resultMap="wzcxInfoResult">
+		select * from insr_wzcx_info where wzcx_car_num
+		= #{wzcx_car_num,
+		jdbcType=VARCHAR}
+	</select>
+
+	<select id="searchWzcxRecordModel" parameterType="Map"
+		resultMap="wzcxRecordResult">
+		select * from insr_wzcx_record where wzcx_id
+		= #{wzcx_id,
+		jdbcType=VARCHAR} and record_status = '1'
+		order by record_id
+		asc
+	</select>
+
+	<select id="searchWzcxRecordByRecordId" parameterType="Map"
+		resultMap="wzcxRecordResult">
+		select * from insr_wzcx_record where record_id
+		= #{record_id,
+		jdbcType=VARCHAR}
+	</select>
+
+	<update id="updateWzcxRecord" parameterType="Map">
+		update
+		insr_wzcx_record
+		set record_wzsj = #{record_wzsj, jdbcType=TIMESTAMP},
+		record_wzdd = #{record_wzdd, jdbcType=VARCHAR},
+		record_wzyy =
+		#{record_wzyy, jdbcType=VARCHAR},
+		record_kf = #{record_kf,
+		jdbcType=DECIMAL},
+		record_fk = #{record_fk, jdbcType=DECIMAL},
+		record_wzzt = #{record_wzzt, jdbcType=DECIMAL}
+		where record_id =
+		#{record_id, jdbcType=VARCHAR}
+	</update>
+
+	<update id="deleteWzcxRecord" parameterType="Map">
+		update
+		insr_wzcx_record
+		set record_status = '0'
+		where record_id = #{record_id,
+		jdbcType=VARCHAR}
+	</update>
+
+	<insert id="insertWzcxRecord" parameterType="com.mockCommon.model.web.WzcxRecordModel">
+		insert into
+		insr_wzcx_record (record_id, wzcx_id, record_wzsj, record_wzdd,
+		record_wzyy, record_kf, record_fk, record_wzzt, record_status)
+		values
+		(#{record_id,jdbcType=VARCHAR}, #{wzcx_id,jdbcType=VARCHAR},
+		#{record_wzsj,jdbcType=TIMESTAMP}, #{record_wzdd,jdbcType=VARCHAR},
+		#{record_wzyy,jdbcType=VARCHAR},#{record_kf,jdbcType=DECIMAL},
+		#{record_fk,jdbcType=DECIMAL},#{record_wzzt,jdbcType=DECIMAL},
+		#{record_status,jdbcType=DECIMAL})
+	</insert>
+
+	<insert id="insertWzcxInfo" parameterType="com.mockCommon.model.web.WzcxInfoModel">
+		insert into
+		insr_wzcx_info (wzcx_id, wzcx_car_num, wzcx_status, wzcx_sfwz)
+		values
+		(#{wzcx_id,jdbcType=VARCHAR}, #{wzcx_car_num,jdbcType=VARCHAR},
+		#{wzcx_status,jdbcType=DECIMAL}, #{wzcx_sfwz,jdbcType=DECIMAL})
+	</insert>
+
+	<update id="updateWzcxInfo" parameterType="Map">
+		update insr_wzcx_info
+		set wzcx_status = #{wzcx_status, jdbcType=DECIMAL},
+		wzcx_sfwz =
+		#{wzcx_sfwz, jdbcType=DECIMAL}
+		where wzcx_car_num = #{wzcx_car_num,
+		jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -1,0 +1,101 @@
+{
+    "success": true,
+    "code": 200,
+    "data": {
+        "info": {                                       
+            "province_code": "${data.province_code!""}",                  
+            "license_prefix": "${data.license_prefix!""}"                  
+        },
+        "require_fields": {                             
+            "local": [                                        
+                {
+                    "text": "车辆品牌型号",                     
+                    "is_required": <#if data.local_car?substring(0,1) == "1">1<#else>0</#if>,                         
+                    "name": "vehicle_name"                     
+                },
+                {
+                    "text": "车架号",
+                    "is_required": <#if data.local_car?substring(1,2) == "1">1<#else>0</#if>,
+                    "name": "frame_no"
+                },
+                {
+                    "text": "发动机",
+                    "is_required": <#if data.local_car?substring(2,3) == "1">1<#else>0</#if>,
+                    "name": "engine_no"
+                },
+                {
+                    "text": "初登日期",
+                    "is_required": <#if data.local_car?substring(3,4) == "1">1<#else>0</#if>,
+                    "name": "enroll_date"
+                },
+                {
+                    "text": "核定载客",
+                    "is_required": <#if data.local_car?substring(4,5) == "1">1<#else>0</#if>,
+                    "name": "seat_count"
+                },
+                {
+                    "text": "整备质量",
+                    "is_required": <#if data.local_car?substring(5) == "1">1<#else>0</#if>,
+                    "name": "vehicle_weight"
+                }
+            ],
+            "non_local": [
+                {
+                    "text": "车辆品牌型号",
+                    "is_required": <#if data.out_car?substring(0,1) == "1">1<#else>0</#if>,
+                    "name": "vehicle_name"
+                },
+                {
+                    "text": "车架号",
+                    "is_required": <#if data.out_car?substring(1,2) == "1">1<#else>0</#if>,
+                    "name": "frame_no"
+                },
+                {
+                    "text": "发动机",
+                    "is_required": <#if data.out_car?substring(2,3) == "1">1<#else>0</#if>,
+                    "name": "engine_no"
+                },
+                {
+                    "text": "初登日期",
+                    "is_required": <#if data.out_car?substring(3,4) == "1">1<#else>0</#if>,
+                    "name": "enroll_date"
+                },
+                {
+                    "text": "核定载客",
+                    "is_required": <#if data.out_car?substring(4,5) == "1">1<#else>0</#if>,
+                    "name": "seat_count"
+                },
+                {
+                    "text": "整备质量",
+                    "is_required": <#if data.out_car?substring(5) == "1">1<#else>0</#if>,
+                    "name": "vehicle_weight"
+                }
+            ]
+        },
+
+        "require_photos": [                                 
+            {
+                "name": "行驶证主页图",                    
+                "category": "行驶证照片",                  
+                "category_code": "license",                 
+                "code": "license-front"                
+            }
+        ],
+
+        "suppliers": [                                    
+            {
+                "name": "人保车险",                        
+                "code": "epicc"                         
+            }
+        ],
+
+        "config": {                             
+            "force_flag": ${data.force_flag!""},                    
+            "separate_tax": 0,                 
+            "force_days": 90,                  
+            "biz_days": ${data.biz_days!""},                    
+            "support_driving_area": ${data.support_driving_area!""},         
+            "support_assign_driver": ${data.support_assign_driver!""}      
+        }
+    }
+}

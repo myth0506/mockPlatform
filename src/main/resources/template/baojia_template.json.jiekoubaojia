@@ -1,0 +1,579 @@
+{
+    "flowId": "${data.flowId!""}",
+    "resultCode": "${data.resultCode!""}",
+    "circResult": {
+        "circResult": {
+            "claimListSize": "0",
+            "claimRecords": []
+        }
+    },
+    "forceConfig": [
+        {
+            "name": "forceInfo.beginDate",
+            "text": "交强险保险起期",
+            "value": "${data.jqxBeginDate!""}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "name": "serverDate",
+            "text": "服务器当前时间",
+            "value": "2014-10-10",
+            "type": "hidden"
+        }
+    ],
+    "vehicle": [
+        {
+            "name": "vehicle.registerDate",
+            "text": "车辆初登日期",
+            "value": "${data.registerDate!""}",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "name": "vehicle.frameNo",
+            "text": "车架号",
+            "value": "${data.frameNo!""}",
+            "type": "text",
+            "regex": "^[4e00-9fa5a-zA-Z0-9*][a-zA-Z0-9*]{3,31}$"
+        },
+        {
+            "name": "vehicle.engineNo",
+            "text": "发动机号",
+            "value": "${data.engineNo!""}",
+            "type": "text",
+            "regex": "^[^4e00-9fa5]{4,21}$"
+        },
+        {
+            "name": "vehicle.model",
+            "text": "车型号",
+            "value": "FV7160ATF E3",
+            "type": "text",
+            "regex": "^[^4e00-9fa5]{1,64}$"
+        },
+        {
+            "name": "vehicle.modelName",
+            "text": "品牌型号",
+            "value": "${data.modelName!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "vehicle.vehicleId",
+            "text": "配置型号",
+            "value": "${data.vehicleId!""}",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "vehicleVo.brandName",
+            "text": "品牌名称",
+            "value": "一汽大众",
+            "type": "text",
+            "regex": ""
+        },
+        {
+            "name": "vehicleVo.description",
+            "text": "车型描述",
+            "value": "自动档 舒适型",
+            "type": "text",
+            "regex": ""
+        },
+        {}
+    ],
+    "bizInfo": [
+        {},
+        {
+            "name": "bizInfo.specialCarFlag",
+            "text": "是否为过户车",
+            "value": "0",
+            "type": "radio",
+            "option": [
+                {
+                    "text": "是",
+                    "value": "1"
+                },
+                {
+                    "text": "否",
+                    "value": "0"
+                }
+            ],
+            "regex": "^0|1$"
+        },
+        {
+            "name": "bizInfo.specialCarDate",
+            "text": "过户日期",
+            "value": "",
+            "type": "text",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        }
+    ],
+    "switches": {
+        "isUseTaxPrice": "false",
+        "isUpGradePMhasData": "0",
+        "renewalConfirm": "0"
+    },
+    "bizConfig": [
+        {
+            "name": "bizConfig.pkgName",
+            "value": "${data.selectedPkgName!""}",
+            "text": "商业险报价",
+            "type": "select",
+            "option": [
+				<#if data.configList ??>
+					<#list data.configList as configList>
+						<#if !configList_has_next>
+							{
+								"text": "${configList.packageNameDesc!""}",
+								"value": "${configList.packageTypeDesc!""}"
+							}
+						<#else>
+							{
+								"text": "${configList.packageNameDesc!""}",
+								"value": "${configList.packageTypeDesc!""}"
+							},
+						</#if>
+					</#list>
+				</#if>
+            ]
+        },
+        {
+            "name": "bizInfo.beginDate",
+            "value": "${data.syxBeginDate!""}",
+            "type": "text",
+            "text": "商业险保险起期",
+            "regex": "^(((((1[6-9]|[2-9]d)d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]d|3[01]))|(((1[6-9]|[2-9]d)d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]d|30))|(((1[6-9]|[2-9]d)d{2})-0?2-(0?[1-9]|1d|2[0-8]))|(((1[6-9]|[2-9]d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29)))?$"
+        },
+        {
+            "selectedPkgName": "${data.selectedPkgName!""}"
+        },
+		<#assign index = 0>
+		<#if data.baojiaConfig.amount01 != "-1">
+			<#if index != 0>,</#if>
+			{
+				"name": "bizConfig.amount01",
+				"value": "${data.baojiaConfig.amount01!""}",
+				"type": "select",
+				"text": "机动车损失保险",
+				"option": [
+					{
+						"text": "不投保 ",
+						"value": "0"
+					},
+					{
+						"text": "投保",
+						"value": "1"
+					}
+				],
+				"children": [
+					{
+						"name": "bizConfig.inputAmount",
+						"value": "${data.defaultAmount01!""}",
+						"type": "input",
+						"regex": "^[${data.lowAmount01!""}-${data.heighAmount01!""}]$",
+						"text": "机动车损失保险",
+						"option": [
+							{
+								"text": "不投保 ",
+								"value": "0"
+							},
+							{
+								"text": "投保",
+								"value": "1"
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "bizConfig.amount01Min",
+				"value": "${data.lowAmount01!""}",
+				"type": "text",
+				"text": "机动车损失保险最小值"
+			},
+			{
+				"name": "bizConfig.amount01Max",
+				"value": "${data.heighAmount01!""}",
+				"type": "text",
+				"text": "机动车损失保险最大值"
+			}
+			 <#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount02 != "-1">
+			<#if index != 0>,</#if>
+		{
+            "name": "bizConfig.amount02",
+            "value": "${data.baojiaConfig.amount02!""}",
+            "type": "select",
+            "text": "第三者责任保险",
+            "option": [
+				<#if data.optionInsureMap ??>
+					<#list data.optionInsureMap?keys as key>
+						<#if key=="amount02">
+							<#if data.optionInsureMap[key] ??>
+								<#list data.optionInsureMap[key] as amount02list>
+									<#if !amount02list_has_next>
+										{
+											"text": "${amount02list.wenAn!""}",
+											"value": "${amount02list.baoE!""}"
+										}
+									<#else>
+										{
+											"text": "${amount02list.wenAn!""}",
+											"value": "${amount02list.baoE!""}"
+										},
+									</#if>
+								</#list>
+							</#if>
+						</#if>
+					</#list>
+				</#if>
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount03 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount03",
+            "value": "${data.baojiaConfig.amount03!""}",
+            "type": "select",
+            "text": "全车盗抢保险",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount04 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount04",
+            "value": "${data.baojiaConfig.amount04!""}",
+            "type": "select",
+            "text": "车上人员责任险(司机)",
+            "option": [
+				<#if data.optionInsureMap ??>
+					<#list data.optionInsureMap?keys as key>
+						<#if key=="amount04">
+							<#if data.optionInsureMap[key] ??>
+								<#list data.optionInsureMap[key] as amount04list>
+									<#if !amount04list_has_next>
+										{
+											"text": "${amount04list.wenAn!""}",
+											"value": "${amount04list.baoE!""}"
+										}
+									<#else>
+										{
+											"text": "${amount04list.wenAn!""}",
+											"value": "${amount04list.baoE!""}"
+										},
+									</#if>
+								</#list>
+							</#if>
+						</#if>
+					</#list>
+				</#if>
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount05 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount05",
+            "value": "${data.baojiaConfig.amount05!""}",
+            "type": "select",
+            "text": "车上人员责任险(乘客)",
+            "option": [
+				<#if data.optionInsureMap ??>
+					<#list data.optionInsureMap?keys as key>
+						<#if key=="amount05">
+							<#if data.optionInsureMap[key] ??>
+								<#list data.optionInsureMap[key] as amount05list>
+									<#if !amount05list_has_next>
+										{
+											"text": "${amount05list.wenAn!""}",
+											"value": "${amount05list.baoE!""}"
+										}
+									<#else>
+										{
+											"text": "${amount05list.wenAn!""}",
+											"value": "${amount05list.baoE!""}"
+										},
+									</#if>
+								</#list>
+							</#if>
+						</#if>
+					</#list>
+				</#if>
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+        <#if data.baojiaConfig.amount08 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount08",
+            "value": "${data.baojiaConfig.amount08!""}",
+            "type": "select",
+            "text": "玻璃单独破碎险",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "国产玻璃",
+                    "value": "1"
+                },
+                {
+                    "text": "进口玻璃",
+                    "value": "2"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount17 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount17",
+            "value": "${data.baojiaConfig.amount17!""}",
+            "type": "select",
+            "text": "车身划痕损失险",
+            "option": [
+				<#if data.optionInsureMap ??>
+					<#list data.optionInsureMap?keys as key>
+						<#if key=="amount17">
+							<#if data.optionInsureMap[key] ??>
+								<#list data.optionInsureMap[key] as amount17list>
+									<#if !amount17list_has_next>
+										{
+											"text": "${amount17list.wenAn!""}",
+											"value": "${amount17list.baoE!""}"
+										}
+									<#else>
+										{
+											"text": "${amount17list.wenAn!""}",
+											"value": "${amount17list.baoE!""}"
+										},
+									</#if>
+								</#list>
+							</#if>
+						</#if>
+					</#list>
+				</#if>
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount18 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount18",
+            "value": "${data.baojiaConfig.amount18!""}",
+            "type": "select",
+            "text": "自燃损失险",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount27 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount27",
+            "value": "${data.baojiaConfig.amount27!""}",
+            "type": "select",
+            "text": "不计免赔险(车损)",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount28 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount28",
+            "value": "${data.baojiaConfig.amount28!""}",
+            "type": "select",
+            "text": "不计免赔险(三者)",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount48 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount48",
+            "value": "${data.baojiaConfig.amount48!""}",
+            "type": "select",
+            "text": "不计免赔险(盗抢)",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount49 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount49",
+            "value": "${data.baojiaConfig.amount49!""}",
+            "type": "select",
+            "text": "不计免赔险(车上人员)",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount50 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount50",
+            "value": "${data.baojiaConfig.amount50!""}",
+            "type": "select",
+            "text": "不计免赔险(附加险)",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount57 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount57",
+            "value": "${data.baojiaConfig.amount57!""}",
+            "type": "select",
+            "text": "指定专修厂特约险",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount41 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount41",
+            "value": "${data.baojiaConfig.amount41!""}",
+            "type": "select",
+            "text": "涉水行驶损失险",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount59 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount59",
+            "value": "${data.baojiaConfig.amount59!""}",
+            "type": "select",
+            "text": "倒车镜、车灯单独损坏险",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+		<#if data.baojiaConfig.amount63 != "-1">
+		<#if index != 0>,</#if>
+        {
+            "name": "bizConfig.amount63",
+            "value": "${data.baojiaConfig.amount63!""}",
+            "type": "select",
+            "text": "机动车损失保险无法找到第三方特约险",
+            "option": [
+                {
+                    "text": "不投保 ",
+                    "value": "0"
+                },
+                {
+                    "text": "投保",
+                    "value": "1"
+                }
+            ]
+        }
+		<#assign index = index + 1>
+		</#if>
+    ]
+}

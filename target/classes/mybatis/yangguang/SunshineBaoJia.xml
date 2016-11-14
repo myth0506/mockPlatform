@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Sunshine">
+	<resultMap id="resultMap" type="com.mockCommon.model.web.yangguang.SunshineBaoJiaModel">
+		<result property="id" column="id"></result>
+		<result property="packageName" column="package_name"></result>
+		<result property="packageType" column="package_type"></result>
+		<result property="packageTypeDesc" column="package_type_desc"></result>
+		<result property="packageDefault" column="package_default"></result>
+		<result property="packageReturn" column="package_return"></result>
+		<result property="busiInsrStartTime" column="busi_insr_start_time"></result>
+		<result property="jqInsrStartTime" column="jq_insr_start_time"></result>
+		<result property="cov_200" column="cov_200"></result>
+		<result property="cov_600" column="cov_600"></result>
+		<result property="cov_500" column="cov_500"></result>
+		<result property="cov_701" column="cov_701"></result>
+		<result property="cov_702" column="cov_702"></result>
+		<result property="cov_321" column="cov_321"></result>
+		<result property="cov_310" column="cov_310"></result>
+		<result property="cov_231" column="cov_231"></result>
+		<result property="cov_210" column="cov_210"></result>
+		<result property="cov_390" column="cov_390"></result>
+		<result property="cov_291" column="cov_291"></result>
+		<result property="cov_640" column="cov_640"></result>
+		<result property="cov_921" column="cov_921"></result>
+		<result property="cov_922" column="cov_922"></result>
+		<result property="cov_911" column="cov_911"></result>
+		<result property="cov_912" column="cov_912"></result>
+		<result property="cov_928" column="cov_928"></result>
+		<result property="cov_929" column="cov_929"></result>
+		<result property="cov_734" column="cov_734"></result>
+		<result property="cov_733" column="cov_733"></result>
+		<result property="updateTime" column="update_time"></result>
+		<result property="packageNameDesc" column="package_name_desc"></result>
+	</resultMap>
+	
+	<select id="queryAllConfigs" resultMap="resultMap">
+		select id, package_name, package_type,
+				decode(package_type, '0', 'luxury', '1', 'affordable', '2', 'renewal', '3', 'optional') package_type_desc,
+				package_default, package_return, busi_insr_start_time, jq_insr_start_time,
+				cov_200, cov_600, cov_500, cov_701, cov_702, cov_321, cov_310, cov_231, cov_210,
+				cov_390, cov_291, cov_640, cov_921, cov_922, cov_911, cov_912, cov_928, cov_929, 
+				cov_734, cov_733, update_time,
+				package_name_desc
+		from sunshine_baojia
+	</select>
+
+	<select id="queryConfig" parameterType="Map" resultMap="resultMap">
+		select * from sunshine_baojia t
+		<where>
+			<if test="packageType!=null and packageType!=''">
+				t.package_type = #{packageType}
+			</if>
+			<if test="packageName!=null and packageName!=''">
+				t.package_name = #{packageName}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryLatestConfig" resultType="com.mockCommon.model.web.yangguang.SunshineBaoJiaModel">
+		select t1.* from (
+			select t.* from sunshine_baojia t order by t.update_time desc
+		) t1 where rownum &lt;= 1
+	</select>
+	
+	<insert id="insertConfig" parameterType="com.mockCommon.model.web.yangguang.SunshineBaoJiaModel">
+		insert into sunshine_baojia(id, package_name, package_type, package_default, package_return, busi_insr_start_time, jq_insr_start_time,
+				cov_200, cov_600, cov_500, cov_701, cov_702, cov_321, cov_310, cov_231, cov_210,
+				cov_390, cov_291, cov_640, cov_921, cov_922, cov_911, cov_912, cov_928, cov_929, cov_734, cov_733, update_time)
+			values(
+				#{id, jdbcType=VARCHAR},
+				#{packageName, jdbcType=VARCHAR},
+				#{packageType, jdbcType=DECIMAL},
+				#{packageDefault, jdbcType=DECIMAL},
+				#{packageReturn, jdbcType=DECIMAL},
+				#{busiInsrStartTime, jdbcType=TIMESTAMP},
+				#{jqInsrStartTime, jdbcType=TIMESTAMP},
+				#{cov_200, jdbcType=VARCHAR},
+				#{cov_600, jdbcType=VARCHAR},
+				#{cov_500, jdbcType=VARCHAR},
+				#{cov_701, jdbcType=VARCHAR},
+				#{cov_702, jdbcType=VARCHAR},
+				#{cov_321, jdbcType=DECIMAL},
+				#{cov_310, jdbcType=VARCHAR},
+				#{cov_231, jdbcType=DECIMAL},
+				#{cov_210, jdbcType=VARCHAR},
+				#{cov_390, jdbcType=DECIMAL},
+				#{cov_291, jdbcType=DECIMAL},
+				#{cov_640, jdbcType=VARCHAR},
+				#{cov_921, jdbcType=DECIMAL},
+				#{cov_922, jdbcType=DECIMAL},
+				#{cov_911, jdbcType=DECIMAL},
+				#{cov_912, jdbcType=DECIMAL},
+				#{cov_928, jdbcType=DECIMAL},
+				#{cov_929, jdbcType=DECIMAL},
+				#{cov_734, jdbcType=DECIMAL},
+				#{cov_733, jdbcType=DECIMAL},
+				sysdate
+			)
+	</insert>
+	
+	<update id="updateConfig" parameterType="com.mockCommon.model.web.yangguang.SunshineBaoJiaModel">
+		update sunshine_baojia
+		<set>
+			<if test="packageDefault!=null and packageDefault!=''">
+				package_default = #{packageDefault},
+			</if>
+			<if test="packageReturn!=null and packageReturn!=''">
+				package_return = #{packageReturn},
+			</if>
+			<if test="busiInsrStartTime!=null and busiInsrStartTime!=''">
+				busi_insr_start_time = #{busiInsrStartTime},
+			</if>
+			<if test="jqInsrStartTime!=null and jqInsrStartTime!=''">
+				jq_insr_start_time = #{jqInsrStartTime},
+			</if>
+			<if test="cov_200!=null and cov_200!=''">
+				cov_200 = #{cov_200},
+			</if>
+			<if test="cov_600!=null and cov_600!=''">
+				cov_600 = #{cov_600},
+			</if>
+			<if test="cov_500!=null and cov_500!=''">
+				cov_500 = #{cov_500},
+			</if>
+			<if test="cov_701!=null and cov_701!=''">
+				cov_701 = #{cov_701},
+			</if>
+			<if test="cov_702!=null and cov_702!=''">
+				cov_702 = #{cov_702},
+			</if>
+			<if test="cov_321!=null and cov_321!=''">
+				cov_321 = #{cov_321},
+			</if>
+			<if test="cov_310!=null and cov_310!=''">
+				cov_310 = #{cov_310},
+			</if>
+			<if test="cov_231!=null and cov_231!=''">
+				cov_231 = #{cov_231},
+			</if>
+			<if test="cov_210!=null and cov_210!=''">
+				cov_210 = #{cov_210},
+			</if>
+			<if test="cov_390!=null and cov_390!=''">
+				cov_390 = #{cov_390},
+			</if>
+			<if test="cov_291!=null and cov_291!=''">
+				cov_291 = #{cov_291},
+			</if>
+			<if test="cov_640!=null and cov_640!=''">
+				cov_640 = #{cov_640},
+			</if>
+			<if test="cov_921!=null and cov_921!=''">
+				cov_921 = #{cov_921},
+			</if>
+			<if test="cov_922!=null and cov_922!=''">
+				cov_922 = #{cov_922},
+			</if>
+			<if test="cov_911!=null and cov_911!=''">
+				cov_911 = #{cov_911},
+			</if>
+			<if test="cov_912!=null and cov_912!=''">
+				cov_912 = #{cov_912},
+			</if>
+			<if test="cov_928!=null and cov_928!=''">
+				cov_928 = #{cov_928},
+			</if>
+			<if test="cov_929!=null and cov_929!=''">
+				cov_929 = #{cov_929},
+			</if>
+			<if test="cov_734!=null and cov_734!=''">
+				cov_734 = #{cov_734},
+			</if>
+			<if test="cov_733!=null and cov_733!=''">
+				cov_733 = #{cov_733},
+			</if>
+				update_time = sysdate
+		</set>
+		<where>
+			<if test="packageType!=null and packageType!=''">
+				package_type = #{packageType}
+			</if>
+		</where>
+	</update>
+	
+	<update id="updateDefaultPk" parameterType="Map">
+		begin
+		update sunshine_baojia t set t.package_default = 0;
+		update sunshine_baojia set package_default = 1 
+		where  package_type = #{package_type};
+		end;
+	</update>
+	
+	<update id="updateReturnPk" parameterType="java.util.List">
+		begin
+		update sunshine_baojia t set t.package_return = 0;
+		update sunshine_baojia set package_return = 1
+		where package_type in 
+		<foreach collection="list" item="type" index="index" open="(" close=")" separator=",">
+			#{type}
+		</foreach>
+		;end;
+	</update>
+	
+	<update id="updateStartTime" parameterType="com.mockCommon.model.web.yangguang.SunshineBaoJiaModel">
+		update sunshine_baojia set 
+			busi_insr_start_time = #{busiInsrStartTime},
+			jq_insr_start_time = #{jqInsrStartTime}
+	</update>
+</mapper>

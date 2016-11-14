@@ -1,0 +1,16 @@
+ <?xml version="1.0" encoding="UTF-8" ?>
+<Result>
+  <PlatformId>${data.platformId!""}</PlatformId>
+  <OutAccount>${data.outAccount!""}</OutAccount>
+  <InAccount>${data.inAccount!""}</InAccount>
+  <ProductId>${data.productId!""}</ProductId>
+  <ProductTime>${data.productTime!""}</ProductTime>
+  <TransferTime>${data.transferTime!""}</TransferTime>
+  <TransferAmount>${data.transferAmount!""}</TransferAmount>
+  <AccountType>${data.accountType!""}</AccountType>
+  <CurrencyType>${data.currencyType!""}</CurrencyType>
+  <TransferStatus>${data.transferStatus!""}</TransferStatus>
+  <TransferType>${data.transferType!""}</TransferType>
+  <TransResult>${data.transResult!""}</TransResult>
+  <Sign>${data.sign!""}</Sign>
+ </Result>

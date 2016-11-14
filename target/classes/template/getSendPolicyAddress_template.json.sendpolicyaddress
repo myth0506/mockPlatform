@@ -1,0 +1,11 @@
+[ { "name":"address.name", "text": "收单人姓名", "value": "${data.name!""}", "type": "text" }, 
+{ "name":"address.mobile", "text": "收单人手机", "value": "${data.mobile!""}", "type": "text" }, 
+{ "name":"department.provinceName", "text": "省份", "value": "${data.provinceName!""}", "type": "select", 
+"option":[ {"text":"北京市","value":"110000"} ] }, { "name":"department.cityName", "text": "城市", "value": "${data.cityName!""}", "type": "select", 
+"option":[ {"text":"北京市","value":"110100"} ] } ,{ "name":"department.townCityCode", "text": "县级市", "value": "${data.townCityCode!""}", "type": "select", 
+"option":[ {"text":"请选择","value":""} ,{"text":"海淀区","value":"110108"} ,
+{"text":"朝阳区","value":"110105"} ] } ,{ "name":"address.detail", "text": "收单人地址", "value": "${data.detail!""}", "type": "text" }, 
+{ "name":"address.storeExtractFlag", "text": "领取方式", "value":"", "type": "text" } ,
+{ "name":"onlyApplyForceFlag", "text": "是否单交强险", "value":"false", "type": "hidden" } ,
+{ "name":"address.confirmSendFlag", "text": "送单前需客服来电确认保单及配送信息", 
+"value":"1", "type": "checkbox", "checked":"checked" } ]

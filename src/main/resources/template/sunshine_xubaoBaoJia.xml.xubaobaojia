@@ -1,0 +1,480 @@
+        <Response>
+            <packageType>${data.packageType!""}</packageType>
+            <TagsList>
+                <Tags type="insuredInfo">
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">insuredIdNo</Definition>
+                        <Definition name="label">被保险人证件号码</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.insuredIdNo!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">insuredEmail</Definition>
+                        <Definition name="label">被保险人邮箱</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.insuredEmail!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">insuredName</Definition>
+                        <Definition name="label">被保险人姓名</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.insuredName!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">insuredMobile</Definition>
+                        <Definition name="label">被保险人手机</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.insuredMobile!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">insuredIdStartDate</Definition>
+                        <Definition name="label">身份证起始日期</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">insuredIdEndDate</Definition>
+                        <Definition name="label">身份证终止日期</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">insuredIdAddress</Definition>
+                        <Definition name="label">身份证地址</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                </Tags>
+                <Tags type="applicantInfo">
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">applicantIdNo</Definition>
+                        <Definition name="label">投保人证件号码</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.applicantIdNo!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">applicantEmail</Definition>
+                        <Definition name="label">投保人邮箱</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.applicantEmail!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">applicantName</Definition>
+                        <Definition name="label">投保人姓名</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.applicantName!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">applicantMobile</Definition>
+                        <Definition name="label">被保险人手机</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.applicantMobile!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">applicantIdStartDate</Definition>
+                        <Definition name="label">身份证起始日期</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">applicantIdEndDate</Definition>
+                        <Definition name="label">身份证终止日期</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">applicantIdAddress</Definition>
+                        <Definition name="label">身份证地址</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">agencyName</Definition>
+                        <Definition name="label">代办人姓名</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">agencyId</Definition>
+                        <Definition name="label">代办人证件号</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">agencyIDStartTime</Definition>
+                        <Definition name="label">代办人身份证起始日期</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">agencyIDEndTime</Definition>
+                        <Definition name="label">代办人身份证终止日期</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                </Tags>
+                <Tags type="vehicleInfo">
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">cityCode</Definition>
+                        <Definition name="label">城市代码</Definition>
+                        <Definition name="value">19503500</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">licenseNo</Definition>
+                        <Definition name="label">车牌号</Definition>
+                        <Definition name="value">苏D56Y16</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">noLicenseFlag</Definition>
+                        <Definition name="label">新车未上牌</Definition>
+                        <Definition name="value">0</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">vehicleModelName</Definition>
+                        <Definition name="label">品牌型号</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.vehicleModelName!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">seats</Definition>
+                        <Definition name="label">座位数</Definition>
+                        <Definition name="value">5</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">isOcr</Definition>
+                        <Definition name="label">是否采集信息</Definition>
+                        <Definition name="value">0</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">vehicleId</Definition>
+                        <Definition name="label">车辆代码</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.vehicleId!""}</Definition>
+                        <Definition name="premium">0</Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">firstRegisterDate</Definition>
+                        <Definition name="label">注册登记日期</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.registerDate!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">engineNo</Definition>
+                        <Definition name="label">发动机号</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.engineNo!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">vehicleFrameNo</Definition>
+                        <Definition name="label">车架号</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.vehicleFrameNo!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">specialCarFlag</Definition>
+                        <Definition name="label">是否过户车</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.specialCarFlag!""}</Definition>
+                        <Definition name="premium">0</Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">specialCarDate</Definition>
+                        <Definition name="label">过户日期</Definition>
+                        <Definition name="value">${(data.sunshineSearchCarInfoMockModel.specialCarDate?string("yyyy-MM-dd"))!''}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">vehicleInvoiceNo</Definition>
+                        <Definition name="label">新车购置发票号</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">vehicleInvoiceDate</Definition>
+                        <Definition name="label">发票开具日期</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                </Tags>
+                <Tags type="ownerInfo">
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">ownerName</Definition>
+                        <Definition name="label">车主</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.ownerName!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">ownerIdNo</Definition>
+                        <Definition name="label">身份证</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.ownerIdNo!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">ownerMobile</Definition>
+                        <Definition name="label">手机号码</Definition>
+                        <Definition name="value">${data.sunshineSearchCarInfoMockModel.ownerMobile!""}</Definition>
+                        <Definition name="premium"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">ownerIdStartDate</Definition>
+                        <Definition name="label">身份证起始日期</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">ownerIdEndDate</Definition>
+                        <Definition name="label">身份证终止日期</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">ownerIdAddress</Definition>
+                        <Definition name="label">身份证地址</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">input</Definition>
+                        <Definition name="key">isDataAcquisition</Definition>
+                        <Definition name="label">是否采集(反洗钱)</Definition>
+                        <Definition name="value">0</Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                </Tags>
+				${data.baseBaojiaPackage!""}
+                <Tags type="lifeTableCpm">
+                    <Tag>
+                        <Definition name="type">hidden</Definition>
+                        <Definition name="key">presentType</Definition>
+                        <Definition name="label">投保礼或UN积分标识</Definition>
+                        <Definition name="value">0</Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">hidden</Definition>
+                        <Definition name="key">presentVal</Definition>
+                        <Definition name="label">投保礼或UN积分值</Definition>
+                        <Definition name="value">0</Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">hidden</Definition>
+                        <Definition name="key">hasAddPresent</Definition>
+                        <Definition name="label">是否有加投</Definition>
+                        <Definition name="value">0</Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">hidden</Definition>
+                        <Definition name="key">isShowAddPresentColumn</Definition>
+                        <Definition name="label">加投是否显示列</Definition>
+                        <Definition name="value"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                </Tags>
+                <Tags type="runAreaType">
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">isRunAreaFlag</Definition>
+                        <Definition name="label">是否可以使用指省</Definition>
+                        <Definition name="value">0</Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                </Tags>
+                <Tags type="driverInfoFlag">
+                    <Tag>
+                        <Definition name="type">label</Definition>
+                        <Definition name="key">isDriverFlag</Definition>
+                        <Definition name="label">是否可以使用指驾</Definition>
+                        <Definition name="value">0</Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                </Tags>
+                <Tags type="immevalid">
+                    <Tag>
+                        <Definition name="type">radio</Definition>
+                        <Definition name="key">isImmevalid</Definition>
+                        <Definition name="label">是否及时生效</Definition>
+                        <Definition name="value">0</Definition>
+                        <Definition name="data"><![CDATA[是:1;否:0]]></Definition>
+                        <Definition name="dataUrl"><![CDATA[]]></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">select</Definition>
+                        <Definition name="label">生效时间(小时)</Definition>
+                        <Definition name="key">immeValidHoursStart</Definition>
+                        <Definition name="value">17</Definition>
+                        <Definition name="data"><![CDATA[17:17;18:18;19:19;20:20;21:21;22:22;23:23;24:24]]></Definition>
+                    </Tag>
+                </Tags>
+                <Tags type="isSupportComReformFlag">
+                    <Tag>
+                        <Definition name="type">hidden</Definition>
+                        <Definition name="key">isSupportComReform</Definition>
+                        <Definition name="label">是否支持费改</Definition>
+                        <Definition name="value">0</Definition>
+                    </Tag>
+                </Tags>
+                <Tags type="policyEmail">
+                    <Tag>
+                        <Definition name="type">select</Definition>
+                        <Definition name="key">policyType</Definition>
+                        <Definition name="label">保单形式:</Definition>
+                        <Definition name="value">1</Definition>
+                        <Definition name="data"><![CDATA[电子保单:1;监制保单:2]]></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                    <Tag>
+                        <Definition name="type">hidden</Definition>
+                        <Definition name="key">orgID</Definition>
+                        <Definition name="label">机构</Definition>
+                        <Definition name="value">19</Definition>
+                        <Definition name="data"></Definition>
+                        <Definition name="dataUrl"></Definition>
+                        <Definition name="checkUrl"></Definition>
+                        <Definition name="premium"></Definition>
+                    </Tag>
+                </Tags>
+            </TagsList>
+        </Response>

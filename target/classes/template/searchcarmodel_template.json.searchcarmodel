@@ -1,0 +1,510 @@
+{
+    "success": true,
+    "code": ${data.code!""},
+    <#if data.searchCarModel == "1">
+    "data": {
+        "vehicle_id": "287ncekk7lj3qkpw",
+        "model_code": "cc7150ce05",
+        "brand_name": "北京现代",
+        "family_name": "伊兰特",
+        "enroll_date": "2016-03-17",
+        "frame_no": "LDC611P2770493282",
+        "engine_no": "135789080",
+        "fill_require_fields": [
+           {
+                "text": "车辆品牌型号",                    
+                "is_required": 1,                           
+                "name": "vehicle_name"                     
+            },
+            {
+                "text": "车架号",
+                "is_required": 1,
+                "name": "frame_no"
+            }
+        ],
+        "city_config": {
+            "force_flag": "${data.cityConfig.forceFlag!""}",
+            "separate_tax": "${data.cityConfig.separateTax!""}",
+            "force_days": "${data.cityConfig.forceDays!""}",
+            "biz_days": "${data.cityConfig.bizDays!""}",
+            "support_driving_area": "${data.cityConfig.supportDrivingArea!""}",
+            "support_assign_driver": "${data.cityConfig.supportAssignDriver!""}"
+        },
+        "require_photos": [
+            {
+                "name": "行驶证主页图",
+                "category": "行驶证照片",
+                "category_code": "license",
+                "code": "license-front"
+            }
+        ],
+        "suppliers": [
+            {
+                "name": "人保车险",
+                "code": "epicc"
+            }
+        ],
+         "coverage": [
+            {
+                "group_code": 0,
+                "code": "force",
+                "description": "发生车险事故时，赔偿对第三方造成的人身及财产损失（不保本车及车上人员），强制购买。",
+                "default": 1,
+                "is_exempt_checked": 0,
+                "is_support_exempt": 0,
+                "dependency": "",
+                "is_master": 0,
+                "order": 0,
+                "type": "checkbox",
+                "name": "交强险/车船税"
+            },
+            {
+                "group_code": 1,
+                "code": "damage",
+                "description": "发生车险事故时，赔偿自己车辆损失的费用，是对车最基本的保障。",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 1,
+                "dependency": "",
+                "is_master": 1,
+                "order": 1,
+                "type": "checkbox",
+                "name": "机动车辆损失险"
+            },
+            {
+                "group_code": 1,
+                "code": "third",
+                "description": "发生车险事故时，赔偿对他人造成的人身及财产损失。",
+                "default": 500000,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 1,
+                "dependency": "",
+                "support_values": [
+                    {
+                        "value": 0,
+                        "label": "不投保"
+                    },
+                    {
+                        "value": 50000,
+                        "label": "5万"
+                    },
+                    {
+                        "value": 100000,
+                        "label": "10万"
+                    },
+                    {
+                        "value": 150000,
+                        "label": "15万"
+                    },
+                    {
+                        "value": 200000,
+                        "label": "20万"
+                    },
+                    {
+                        "value": 300000,
+                        "label": "30万"
+                    },
+                    {
+                        "value": 500000,
+                        "label": "50万"
+                    },
+                    {
+                        "value": 1000000,
+                        "label": "100万"
+                    },
+                    {
+                        "value": 1500000,
+                        "label": "150万"
+                    },
+                    {
+                        "value": 2000000,
+                        "label": "200万"
+                    }
+                ],
+                "is_master": 1,
+                "order": 3,
+                "type": "select",
+                "name": "第三者责任险"
+            },
+            {
+                "group_code": 1,
+                "code": "driver",
+                "description": "由于驾驶者自身责任发生车险事故，赔偿车内驾驶员自身的伤亡和医疗费用。",
+                "default": 10000,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 1,
+                "dependency": "third",
+                "support_values": [
+                    {
+                        "value": 0,
+                        "label": "不投保"
+                    },
+                    {
+                        "value": 10000,
+                        "label": "1万"
+                    },
+                    {
+                        "value": 20000,
+                        "label": " 2万"
+                    },
+                    {
+                        "value": 30000,
+                        "label": " 3万"
+                    },
+                    {
+                        "value": 40000,
+                        "label": " 4万"
+                    },
+                    {
+                        "value": 50000,
+                        "label": "5万"
+                    },
+                    {
+                        "value": 100000,
+                        "label": "10万"
+                    },
+                    {
+                        "value": 200000,
+                        "label": "20万"
+                    }
+                ],
+                "is_master": 1,
+                "order": 4,
+                "type": "select",
+                "name": "司机险"
+            },
+            {
+                "group_code": 1,
+                "code": "passenger",
+                "description": "发生车险事故时，赔偿车内乘客的伤亡和医疗赔偿费用。",
+                "default": 10000,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 1,
+                "dependency": "third",
+                "support_values": [
+                    {
+                        "value": 0,
+                        "label": "不投保"
+                    },
+                    {
+                        "value": 10000,
+                        "label": "1万"
+                    },
+                    {
+                        "value": 20000,
+                        "label": " 2万"
+                    },
+                    {
+                        "value": 30000,
+                        "label": " 3万"
+                    },
+                    {
+                        "value": 40000,
+                        "label": " 4万"
+                    },
+                    {
+                        "value": 50000,
+                        "label": "5万"
+                    },
+                    {
+                        "value": 100000,
+                        "label": "10万"
+                    },
+                    {
+                        "value": 200000,
+                        "label": "20万"
+                    }
+                ],
+                "is_master": 1,
+                "order": 5,
+                "type": "select",
+                "name": "乘客险"
+            },
+            {
+                "group_code": 1,
+                "code": "pilfer",
+                "description": "赔偿全车被盗窃、抢劫、抢夺造成的车辆损失。",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 1,
+                "dependency": "damage",
+                "is_master": 1,
+                "order": 6,
+                "type": "checkbox",
+                "name": "盗抢险"
+            },
+            {
+                "group_code": 2,
+                "code": "glass",
+                "description": "赔偿车窗、挡风玻璃的单独开裂、破碎损失。",
+                "default": 1,
+                "is_exempt_checked": 0,
+                "is_support_exempt": 0,
+                "dependency": "damage",
+                "support_values": [
+                    {
+                        "value": 0,
+                        "label": "不投保"
+                    },
+                    {
+                        "value": 1,
+                        "label": "国产玻璃"
+                    },
+                    {
+                        "value": 2,
+                        "label": "进口玻璃"
+                    }
+                ],
+                "is_master": 0,
+                "order": 7,
+                "type": "select",
+                "name": "玻璃险"
+            },
+            {
+                "group_code": 2,
+                "code": "scratch",
+                "description": "赔偿车身表面油漆单独划伤的损失（注：行驶碰撞的划痕损失归车损险）。",
+                "default": 2000,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 1,
+                "dependency": "damage",
+                "support_values": [
+                    {
+                        "value": 0,
+                        "label": "不投保"
+                    },
+                    {
+                        "value": 2000,
+                        "label": "2千"
+                    },
+                    {
+                        "value": 5000,
+                        "label": "5千"
+                    },
+                    {
+                        "value": 10000,
+                        "label": "1万"
+                    },
+                    {
+                        "value": 20000,
+                        "label": "2万"
+                    }
+                ],
+                "is_master": 0,
+                "order": 8,
+                "type": "select",
+                "name": "划痕险"
+            },
+            {
+                "group_code": 2,
+                "code": "combust",
+                "description": "因车辆自身发生问题引起燃烧时，赔偿因此造成的电器线路和供油系统的维修损失。",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 1,
+                "dependency": "damage",
+                "is_master": 0,
+                "order": 9,
+                "type": "checkbox",
+                "name": "自燃险"
+            },
+            {
+                "group_code": 2,
+                "code": "water",
+                "description": "车辆在积水路面涉水行驶或被水淹后，致使发动机损坏给予赔偿。",
+                "default": 1,
+                "is_exempt_checked": 0,
+                "is_support_exempt": 1,
+                "dependency": "damage",
+                "is_master": 0,
+                "order": 10,
+                "type": "checkbox",
+                "name": "涉水险"
+            },
+            {
+                "group_code": 1,
+                "code": "third_party",
+                "description": "",
+                "default": 0,
+                "is_exempt_checked": 0,
+                "is_support_exempt": 0,
+                "dependency": "damage",
+                "is_master": 1,
+                "order": 11,
+                "type": "checkbox",
+                "name": "机动车损失保险无法找到第三方特约险"
+            },
+            {
+                "group_code": 2,
+                "code": "rearview",
+                "description": "赔偿车辆使用过程中，非人为造成的倒车镜、车灯单独损坏的损失。比如车子在拐弯或者倒车过程中，倒车镜刮到墙上撞坏了。",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 1,
+                "dependency": "damage",
+                "support_values": [
+                    {
+                        "value": 0,
+                        "label": "不投保"
+                    },
+                    {
+                        "value": 1,
+                        "label": "国产"
+                    },
+                    {
+                        "value": 2,
+                        "label": "进口"
+                    }
+                ],
+                "is_master": 0,
+                "order": 12,
+                "type": "select",
+                "name": "倒车镜、车灯单独损坏险"
+            },
+            {
+                "group_code": 2,
+                "code": "factory",
+                "description": "",
+                "default": 1,
+                "is_exempt_checked": 0,
+                "is_support_exempt": 0,
+                "dependency": "",
+                "is_master": 0,
+                "order": 13,
+                "type": "checkbox",
+                "name": "指定专修厂"
+            },
+            {
+                "group_code": 3,
+                "code": "exempt_damage",
+                "description": "",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 0,
+                "dependency": "damage",
+                "is_master": 0,
+                "type": "checkbox",
+                "order": 21,
+                "name": "机动车辆损失险不计免赔"
+            },
+            {
+                "group_code": 3,
+                "code": "exempt_third",
+                "description": "",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 0,
+                "dependency": "third",
+                "is_master": 0,
+                "type": "checkbox",
+                "order": 23,
+                "name": "第三者责任险不计免赔"
+            },
+            {
+                "group_code": 3,
+                "code": "exempt_driver",
+                "description": "",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 0,
+                "dependency": "driver",
+                "is_master": 0,
+                "type": "checkbox",
+                "order": 24,
+                "name": "司机险不计免赔"
+            },
+            {
+                "group_code": 3,
+                "code": "exempt_passenger",
+                "description": "",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 0,
+                "dependency": "passenger",
+                "is_master": 0,
+                "type": "checkbox",
+                "order": 25,
+                "name": "乘客险不计免赔"
+            },
+            {
+                "group_code": 3,
+                "code": "exempt_pilfer",
+                "description": "",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 0,
+                "dependency": "pilfer",
+                "is_master": 0,
+                "type": "checkbox",
+                "order": 26,
+                "name": "盗抢险不计免赔"
+            },
+            {
+                "group_code": 3,
+                "code": "exempt_scratch",
+                "description": "",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 0,
+                "dependency": "scratch",
+                "is_master": 0,
+                "type": "checkbox",
+                "order": 28,
+                "name": "划痕险不计免赔"
+            },
+            {
+                "group_code": 3,
+                "code": "exempt_combust",
+                "description": "",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 0,
+                "dependency": "combust",
+                "is_master": 0,
+                "type": "checkbox",
+                "order": 29,
+                "name": "自燃险不计免赔"
+            },
+            {
+                "group_code": 3,
+                "code": "exempt_water",
+                "description": "",
+                "default": 0,
+                "is_exempt_checked": 0,
+                "is_support_exempt": 0,
+                "dependency": "water",
+                "is_master": 0,
+                "type": "checkbox",
+                "order": 30,
+                "name": "涉水险不计免赔"
+            },
+            {
+                "group_code": 3,
+                "code": "exempt_rearview",
+                "description": "",
+                "default": 1,
+                "is_exempt_checked": 1,
+                "is_support_exempt": 0,
+                "dependency": "rearview",
+                "is_master": 0,
+                "type": "checkbox",
+                "order": 32,
+                "name": "倒车镜、车灯单独损坏险不计免赔"
+            }
+        ]
+    }
+    <#else>
+     "fill_require_fields": [          
+            {
+                "text": "车辆品牌型号",                     
+                "is_required": 1,                           
+                "name": "vehicle_name"                   
+            },
+            {
+                "text": "车架号",
+                "is_required": 1,
+                "name": "frame_no"
+            },
+        ]
+    </#if>   
+}

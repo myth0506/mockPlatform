@@ -1,0 +1,361 @@
+{
+    "flowId": "${data.flowId!""}",
+    "resultCode": "${data.resultCode!""}",
+    "circResult": {
+        "circResult": {
+            "claimListSize": "0",
+            "claimRecords": []
+        }
+    },
+    "bizPremium": {
+		"amounts": {
+			<#assign index = 0>
+			<#if data.baoJiaConfig.amount01 != "-1">
+				<#if index != 0>,</#if>
+				"amount01Default": "${data.iniMap['defaultAmount01']!""}",
+				"amount01Max": "${data.iniMap['heighAmount01']!""}",
+				"amount01Min": "${data.iniMap['lowAmount01']!""}",
+				<#if data.baoJiaConfig.amount01 == "0">
+					"amount01":"0"
+				<#else>
+				<#if data.inputAmount ??>
+					"amount01": "${data.inputAmount!""}"
+				<#else>
+					"amount01": "${data.iniMap['defaultAmount01']!""}"
+				</#if>
+				</#if>
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount02 != "-1">
+				<#if index != 0>,</#if>
+				"amount02": "${data.baoJiaConfig.amount02!""}"
+				<#assign index = index + 1>
+			</#if>
+            <#if data.baoJiaConfig.amount03 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount03 == "0">
+					"amount03":"0"
+				<#else>
+				<#if data.inputAmount ??>
+					"amount03": "${data.inputAmount!""}"
+				<#else>
+					"amount03": "${data.iniMap['defaultAmount01']!""}"
+				</#if>
+				</#if>
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount04 != "-1">
+				<#if index != 0>,</#if>
+				"amount04": "${data.baoJiaConfig.amount04!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount05 != "-1">
+				<#if index != 0>,</#if>
+				"amount05": "${data.baoJiaConfig.amount05!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount08 != "-1">
+				<#if index != 0>,</#if>
+				"amount08": "${data.baoJiaConfig.amount08!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount17 != "-1">
+				<#if index != 0>,</#if>
+				"amount17": "${data.baoJiaConfig.amount17!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount18 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount18 == "0">
+					"amount18":"0"
+				<#else>
+				<#if data.inputAmount ??>
+					"amount18": "${data.inputAmount!""}"
+				<#else>
+					"amount18": "${data.iniMap['defaultAmount01']!""}"
+				</#if>
+				</#if>
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount27 != "-1">
+				<#if index != 0>,</#if>
+				"amount27": "${data.baoJiaConfig.amount27!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount28 != "-1">
+				<#if index != 0>,</#if>
+				"amount28": "${data.baoJiaConfig.amount28!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount48 != "-1">
+				<#if index != 0>,</#if>
+				"amount48": "${data.baoJiaConfig.amount48!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount49 != "-1">
+				<#if index != 0>,</#if>
+				"amount49": "${data.baoJiaConfig.amount49!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount50 != "-1">
+				<#if index != 0>,</#if>
+				"amount50": "${data.baoJiaConfig.amount50!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount41 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount41 == "0">
+					"amount41":"0"
+				<#else>
+				<#if data.inputAmount ??>
+					"amount41": "${data.inputAmount!""}"
+				<#else>
+					"amount41": "${data.iniMap['defaultAmount01']!""}"
+				</#if>
+				</#if>
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount57 != "-1">
+				<#if index != 0>,</#if>
+				"amount57": "${data.baoJiaConfig.amount57!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount59 != "-1">
+				<#if index != 0>,</#if>
+				"amount59": "${data.baoJiaConfig.amount59!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount63 != "-1">
+				<#if index != 0>,</#if>
+				"amount63": "${data.baoJiaConfig.amount63!""}"
+				<#assign index = index + 1>
+			</#if>
+			<#if data.inputAmount ??>
+				<#if index != 0>,</#if>
+				"inputAmount": "${data.inputAmount}"
+			<#else>
+				<#if index != 0>,</#if>
+				"inputAmount": "${data.iniMap['defaultAmount01']!""}"
+				<#assign index = index + 1>
+			</#if>
+        },
+        "premiums": {
+			<#assign index = 0>
+			<#assign totalBaoFei = 0>
+			<#if data.baoJiaConfig.amount01 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount01=="0">
+				"premium01": "0"
+				<#else>
+					<#if data.inputAmount ??>
+						<#if data.inputAmount!=data.iniMap['defaultAmount01']>
+						"premium01": "${data.iniMap['zidingyiAmount01']!""}"
+						<#assign p01 = data.iniMap['zidingyiAmount01']?number>
+						<#assign totalBaoFei = totalBaoFei + p01>
+						<#else>
+						"premium01": "${data.iniMap['amount01']!""}"
+						<#assign p01 = data.iniMap['amount01']?number>
+						<#assign totalBaoFei = totalBaoFei + p01>
+						</#if>
+					<#else>
+						"premium01": "${data.iniMap['amount01']!""}"
+						<#assign p01 = data.iniMap['amount01']?number>
+						<#assign totalBaoFei = totalBaoFei + p01>
+					</#if>
+				</#if>
+				<#assign index = index + 1>
+			</#if>
+			<#if data.baoJiaConfig.amount02 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount02=="0">
+				"premium02": "0"
+				<#else>
+				"premium02": "${data.dynamicIniMap['amount02'].baoFei!""}"
+				<#assign p02 = data.dynamicIniMap['amount02'].baoFei?number>
+				<#assign totalBaoFei = totalBaoFei + p02>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount03 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount03=="0">
+				"premium03": "0"
+				<#else>
+				"premium03": "${data.iniMap['amount03']!""}"
+				<#assign p03 = data.iniMap['amount03']?number>
+				<#assign totalBaoFei = totalBaoFei + p03>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount04 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount04=="0">
+				"premium04": "0"
+				<#else>
+				"premium04": "${data.dynamicIniMap['amount04'].baoFei!""}"
+				<#assign p04 = data.dynamicIniMap['amount04'].baoFei?number>
+				<#assign totalBaoFei = totalBaoFei + p04>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount05 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount05=="0">
+				"premium05": "0"
+				<#else>
+				"premium05": "${data.dynamicIniMap['amount05'].baoFei!""}"
+				<#assign p05 = data.dynamicIniMap['amount05'].baoFei?number>
+				<#assign totalBaoFei = totalBaoFei + p05>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount08 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount08=="0">
+				"premium08": "0"
+				</#if>
+				<#if data.baoJiaConfig.amount08=="1">
+				"premium08": "${data.iniMap['gcAmount08']!""}"
+				<#assign p08gc = data.iniMap['gcAmount08']?number>
+				<#assign totalBaoFei = totalBaoFei + p08gc>
+				</#if>
+				<#if data.baoJiaConfig.amount08=="2">
+				"premium08": "${data.iniMap['jkAmount08']!""}"
+				<#assign p08jk = data.iniMap['jkAmount08']?number>
+				<#assign totalBaoFei = totalBaoFei + p08jk>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount17 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount17=="0">
+				"premium17": "0"
+				<#else>
+				"premium17": "${data.dynamicIniMap['amount17'].baoFei!""}"
+				<#assign p17 = data.dynamicIniMap['amount17'].baoFei?number>
+				<#assign totalBaoFei = totalBaoFei + p17>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount18 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount18=="0">
+				"premium18": "0"
+				<#else>
+				"premium18": "${data.iniMap['amount18']!""}"
+				<#assign p18 = data.iniMap['amount18']?number>
+				<#assign totalBaoFei = totalBaoFei + p18>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount27 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount27=="0">
+				"premium27": "0"
+				<#else>
+				"premium27": "${data.iniMap['amount27']!""}"
+				<#assign p27 = data.iniMap['amount27']?number>
+				<#assign totalBaoFei = totalBaoFei + p27>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount28 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount28=="0">
+				"premium28": "0"
+				<#else>
+				"premium28": "${data.iniMap['amount28']!""}"
+				<#assign p28 = data.iniMap['amount28']?number>
+				<#assign totalBaoFei = totalBaoFei + p28>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount48 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount48=="0">
+				"premium48": "0"
+				<#else>
+				"premium48": "${data.iniMap['amount48']!""}"
+				<#assign p48 = data.iniMap['amount48']?number>
+				<#assign totalBaoFei = totalBaoFei + p48>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount49 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount49=="0">
+				"premium49": "0"
+				<#else>
+				"premium49": "${data.iniMap['amount49']!""}"
+				<#assign p49 = data.iniMap['amount49']?number>
+				<#assign totalBaoFei = totalBaoFei + p49>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount50 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount50=="0">
+				"premium50": "0"
+				<#else>
+				"premium50": "${data.iniMap['amount50']!""}"
+				<#assign p50 = data.iniMap['amount50']?number>
+				<#assign totalBaoFei = totalBaoFei + p50>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount41 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount41=="0">
+				"premium41": "0"
+				<#else>
+				"premium41": "${data.iniMap['amount41']!""}"
+				<#assign p41 = data.iniMap['amount41']?number>
+				<#assign totalBaoFei = totalBaoFei + p41>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount57 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount57=="0">
+				"premium57": "0"
+				<#else>
+				"premium57": "${data.iniMap['amount57']!""}"
+				<#assign p57 = data.iniMap['amount57']?number>
+				<#assign totalBaoFei = totalBaoFei + p57>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount59 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount59=="0">
+				"premium59": "0"
+				<#else>
+				"premium59": "${data.iniMap['amount59']!""}"
+				<#assign p59 = data.iniMap['amount59']?number>
+				<#assign totalBaoFei = totalBaoFei + p59>
+				</#if>
+				<#assign index = index + 1>
+			</#if>	
+			<#if data.baoJiaConfig.amount63 != "-1">
+				<#if index != 0>,</#if>
+				<#if data.baoJiaConfig.amount63=="0">
+				"premium63": "0"
+				<#else>
+				"premium63": "${data.iniMap['amount63']!""}"
+				<#assign p63 = data.iniMap['amount63']?number>
+				<#assign totalBaoFei = totalBaoFei + p63>
+				</#if>
+				<#assign index = index + 1>
+			</#if>
+			<#if "1"=="1">
+				<#if index != 0>,</#if>
+				<#assign originalp = data.iniMap['originalPremium']?number>
+				"totalPremium": "${totalBaoFei?c}",
+            	"originalPremium": "${data.iniMap['originalPremium']}",
+				<#assign savep = originalp - totalBaoFei>
+            	"savedPremium": "${savep?c}"
+            	<#assign index = index + 1>
+			</#if>			
+        }
+    }
+}

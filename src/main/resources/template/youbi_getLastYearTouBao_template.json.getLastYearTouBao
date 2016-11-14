@@ -1,0 +1,28 @@
+{
+    "code": 200,
+    "success": true,
+    "data": {
+        "status": ${data.status!'1'},
+        "supplier_code": "${data.supplier_code!'epicc'}",
+        "supplier_name": "${data.supplier_code!'人保车险'}",
+        "selection": [
+        <#if data.selection??>
+        	<#list data.selection as businessConfigModel>
+        	<#if !businessConfigModel_has_next>
+            {
+                "amount": "${businessConfigModel.baoE}",
+                "premium": "${businessConfigModel.baoFei}",
+                "code": "${businessConfigModel.businessCode}"
+            }
+            <#else>
+            {
+                "amount": "${businessConfigModel.baoE}",
+                "premium": "${businessConfigModel.baoFei}",
+                "code": "${businessConfigModel.businessCode}"
+            },
+            </#if>
+            </#list>
+        </#if>
+        ]
+    }
+}

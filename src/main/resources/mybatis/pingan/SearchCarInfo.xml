@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SearchCarInfo">
+
+	<resultMap id="PersonInfoModelResultMap" type="com.mockCommon.model.web.pingan.PersonInfoModel">
+		<result property="personId" column="person_id"></result>
+		<result property="licenseNo" column="license_no"></result>
+		<result property="personType" column="person_type"></result>
+		<result property="personName" column="person_name"></result>
+		<result property="personGender" column="person_gender"></result>
+		<result property="personMobile" column="person_mobile"></result>
+		<result property="personIdType" column="person_idtype"></result>
+		<result property="personIdNo" column="person_idno"></result>
+		<result property="personBirthday" column="person_birthday"></result>
+		<result property="personEmail" column="person_email"></result>
+		<result property="personAddress" column="person_address"></result>
+	</resultMap>
+
+	<resultMap id="VehicleInfoModelResultMap" type="com.mockCommon.model.web.pingan.VehicleInfoModel">
+		<result property="vehicleId" column="vehicle_id"></result>
+		<result property="licenseNo" column="license_no"></result>
+		<result property="vehicleFrameNo" column="vehicle_frame_no"></result>
+		<result property="vehicleEngineNo" column="vehicle_engine_no"></result>
+		<result property="vehicleRegisterDate" column="vehicle_register_date"></result>
+		<result property="vehicleModel" column="vehicle_model"></result>
+		<result property="vehicleModelName" column="vehicle_model_name"></result>
+		<result property="vehicleVehicleId" column="vehicle_vehicle_id"></result>
+		<result property="vehicleSpecialCarFlag" column="vehicle_special_car_flag"></result>
+		<result property="vehicleSpecialCarDate" column="vehicle_special_car_date"></result>
+	</resultMap>
+
+	<select id="searchPersonInfo" parameterType="Map"
+		resultMap="PersonInfoModelResultMap">
+		select * from insr_person_info where
+		license_no =
+		#{vehicleNo,jdbcType=VARCHAR}
+		and person_type =
+		#{personType,jdbcType=VARCHAR}
+	</select>
+
+	<select id="searchVehicleInfo" parameterType="Map"
+		resultMap="VehicleInfoModelResultMap">
+		select * from insr_vehicle_info where
+		license_no =
+		#{vehicleNo,jdbcType=VARCHAR}
+	</select>
+
+	<update id="updatePersonInfo" parameterType="Map">
+		update insr_person_info set 
+		person_name = #{personName, jdbcType=VARCHAR},
+		person_gender = #{personGender, jdbcType=VARCHAR},
+		person_mobile = #{personMobile, jdbcType=VARCHAR},
+		person_idno = #{personIdNo, jdbcType=VARCHAR},
+		person_birthday = #{personBirthday, jdbcType=TIMESTAMP},
+		person_email = #{personEmail, jdbcType=VARCHAR},
+		person_address = #{personAddress, jdbcType=VARCHAR},
+		person_idtype = #{personIdType, jdbcType=DECIMAL}
+		where license_no = #{vehicleNo,jdbcType=VARCHAR}  
+		and person_type = #{personType, jdbcType=VARCHAR}
+	</update>
+
+	<insert id="insertPersonInfo" parameterType="com.mockCommon.model.web.pingan.PersonInfoModel">
+		insert into
+		insr_person_info (person_id, license_no, person_type, person_name, person_gender,
+		person_mobile, person_idno, person_birthday, person_email,
+		person_address, person_idtype)
+		values
+		(#{personId,jdbcType=VARCHAR}, #{licenseNo,jdbcType=VARCHAR},
+		#{personType,jdbcType=VARCHAR}, #{personName,jdbcType=VARCHAR},
+		#{personGender, jdbcType=VARCHAR},
+		#{personMobile,jdbcType=VARCHAR}, #{personIdNo,jdbcType=VARCHAR},
+		#{personBirthday,jdbcType=TIMESTAMP}, #{personEmail,jdbcType=VARCHAR},
+		#{personAddress,jdbcType=VARCHAR}, #{personIdType,jdbcType=DECIMAL})
+	</insert>
+	
+	<update id="updateVehicleInfo" parameterType="Map">
+		update insr_vehicle_info set 
+		vehicle_frame_no = #{vehicleFrameNo, jdbcType=VARCHAR},
+		vehicle_engine_no = #{vehicleEngineNo, jdbcType=VARCHAR},
+		vehicle_register_date = #{vehicleRegisterDate, jdbcType=TIMESTAMP},
+		vehicle_model = #{vehicleModel, jdbcType=VARCHAR},
+		vehicle_model_name = #{vehicleModelName, jdbcType=VARCHAR},
+		vehicle_vehicle_id = #{vehicleVehicleId, jdbcType=VARCHAR},
+		vehicle_special_car_flag = #{vehicleSpecialCarFlag, jdbcType=VARCHAR},
+		vehicle_special_car_date = #{vehicleSpecialCarDate, jdbcType=TIMESTAMP}
+		where license_no = #{vehicleNo,jdbcType=VARCHAR}  
+	</update>
+	
+	<insert id="insertVehicleInfo" parameterType="com.mockCommon.model.web.pingan.VehicleInfoModel">
+		insert into
+		insr_vehicle_info (vehicle_id, license_no, vehicle_frame_no, vehicle_engine_no,
+		vehicle_register_date, vehicle_model, vehicle_model_name, vehicle_vehicle_id,
+		vehicle_special_car_flag, vehicle_special_car_date)
+		values
+		(#{vehicleId,jdbcType=VARCHAR}, #{licenseNo,jdbcType=VARCHAR},
+		#{vehicleFrameNo,jdbcType=VARCHAR}, #{vehicleEngineNo,jdbcType=VARCHAR},
+		#{vehicleRegisterDate,jdbcType=TIMESTAMP}, #{vehicleModel,jdbcType=VARCHAR},
+		#{vehicleModelName,jdbcType=VARCHAR}, #{vehicleVehicleId,jdbcType=VARCHAR},
+		#{vehicleSpecialCarFlag,jdbcType=VARCHAR}, #{vehicleSpecialCarDate,jdbcType=TIMESTAMP})
+	</insert>
+</mapper>

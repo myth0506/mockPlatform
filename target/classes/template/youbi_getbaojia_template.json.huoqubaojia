@@ -1,0 +1,436 @@
+{
+    "code": 200,
+    <#if data.bjkg = "1">
+    "data": {
+        "quotes": [
+            {
+                "code": 0, 
+                "quote_id": "58jwtxg95ve39wpr",
+                 "pay_info": {
+                    "total": "${(data.total)?replace(',','')}",
+                    "biz_total": "${(data.biz_total)?replace(',','')}",
+                    "tax":"${(data.ccs!'0')?replace(',','')}",
+                    "force_original": "${(data.jqxbf)?replace(',','')!'0'}", 
+                    "total_cent": "${(data.total*100)?replace(',','')}",
+                    "force_total": "${(data.jqxbf)?replace(',','')!'0'}", 
+                    "biz_original": "${(data.biz_original)?replace(',','')}",
+                    "original": "${(data.original)?replace(',','')}" 
+                    },
+                "supplier_name": "永安车险", 
+                "supplier_code": "yaic",
+                "is_success": true,
+                "is_done": true,
+                "data": {
+                    "biz_info": {
+                        "end_date": "${data.endTime}",
+                        "original": "${(data.biz_total/(0.85*0.855))?replace(',','')}",
+                        "detail": [
+							<#assign index = 0>
+							<#assign biz_total = 0>
+							<#list data.businessInfoModel as businessInfoModel>
+							<#if businessInfoModel.business_name == "车辆损失险" && businessInfoModel.is_checked == "true">
+						
+			                <#if index != 0>,</#if>
+		                     {
+                                "code": "damage",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if>                                          
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "全车盗抢险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "pilfer",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "商业第三者责任险" && businessInfoModel.is_checked == "true">
+	                     	
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "third",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "司机座位责任险" && businessInfoModel.is_checked == "true">
+	                     	 	
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "driver",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "乘客座位责任险" && businessInfoModel.is_checked == "true">        	 
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "passenger",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "车身划痕损险" && businessInfoModel.is_checked == "true">                     	
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "scratch",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "玻璃单独破碎险" && businessInfoModel.is_checked == "true">      	
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "glass",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "涉水险" && businessInfoModel.is_checked == "true">	                     	
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "water",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "自燃损失险" && businessInfoModel.is_checked == "true">                    	
+			                <#if index != 0>,</#if>
+		                     {
+                              "code": "combust",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "倒车镜、车灯单独损坏险" && businessInfoModel.is_checked == "true">                    	
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "rearview",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "机动车损失保险无法找到第三方特约险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "third_party",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "不计免赔车损险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "exempt_damage",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "不计免赔三者险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "exempt_third",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "不计免赔机动车盗抢险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "exempt_pilfer",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "不计免赔司机险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                              "code": "exempt_driver",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "不计免赔乘客险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "exempt_passenger",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "不计免赔车身划痕损失险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "exempt_scratch",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "不计免赔自燃损失险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                                "code": "exempt_combust",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "不计免赔涉水险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "exempt_water",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+	                     	<#if businessInfoModel.business_name == "不计免赔倒车镜、车灯单独损坏险" && businessInfoModel.is_checked == "true">
+			                <#if index != 0>,</#if>
+		                     {
+                               "code": "exempt_rearview",
+                                "premium": "${(businessInfoModel.baofei)?replace(',','')!""}",
+                                "insured": ${businessInfoModel.is_vote},
+								"amount": "${(businessInfoModel.baoe)?replace(',','')}",
+								"valid": ${businessInfoModel.is_valid},
+								  <#if (data.fgRadio?number > 0)>
+                                   "original": "${(businessInfoModel.baofei)?replace(',','')!""}"      
+                                  <#else>
+                                  <#assign original = "${(businessInfoModel.baofei)?replace(',','')}"?number/0.85 >
+                                  "original": "${(original)?replace(',','')}"
+                                  </#if> 
+                             }
+                            <#assign biz_total = biz_total + "${(businessInfoModel.baofei)?replace(',','')}"?number >
+	                     	<#assign index = index + 1>
+	                     	</#if>
+		                    </#list>
+                             ],
+                               "discount": "${data.discount}", 
+                               "start_date": "${data.defaultTime}", 
+                               "total": "${data.biz_total}", 
+                               "valid": true
+                           },
+                            "force_info": {
+                            "tax": "${data.ccs!'0'}",
+                            "premium": "${data.jqxbf!'0'}", 
+                            "origin_message": "${data.jqxsbxxma!''}",
+                            "end_date": "${data.endTime}",  
+                            "start_date": "${data.defaultTime}",
+                            "message":"${data.jqxsbxx!''}"
+                    }
+                }
+            }
+        ],
+        "force_ly_end_date": "${data.jqxend!"${data.defaultTime}"}",
+        "force_expire_days": "${data.jqxdqts!""}",
+        "is_done": true
+    },
+        "success": true
+    <#else>  
+    "data":{
+        "quotes":[
+            {
+                "code":-1,
+                "supplier_code":"pingan",
+                "is_done":true,
+                "original_message":"${data.sbjqxsbxxma!''}",
+                "supplier_name":"平安车险",
+                "is_success":false,
+                "message":"${data.sbjqxsbxx!''}"
+            }
+        ],
+        "force_ly_end_date":"${data.jqxend!"${data.defaultTime}"}",
+        "force_expire_days":"${data.jqxdqts!""}",
+        "is_done":true
+    },
+    "success":true
+    </#if>      
+}

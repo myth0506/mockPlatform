@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK" standalone="yes"?>
+<PackageList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Package>
+		<Header>
+			<version>2</version>
+			<RequestType>${data.requestType!""}</RequestType>
+			<InsureType>${data.insureType!""}</InsureType>
+			<SessionId>201501212139114572</SessionId>
+			<SellerId>3597746367</SellerId>
+			<SendTime>${(data.sendTime?string("yyyy-MM-dd HH:mm:ss"))!''}</SendTime>
+			<Status>${data.status!""}</Status>
+			<ErrorMessage>${data.errorMessage!""}</ErrorMessage>
+		</Header>
+		<Sign>${data.sign!""}</Sign>
+		${data.packageBody!""}
+	</Package>
+</PackageList>

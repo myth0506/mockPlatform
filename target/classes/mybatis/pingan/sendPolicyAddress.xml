@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sendPolicyAddress">
+
+	<select id="selectProvinceModel" parameterType="Map"
+		resultType="com.mockCommon.model.web.pingan.AddressModel">
+		select * from tb_carinsu_area where
+		city_level = 1 order by city_code
+	</select>
+	
+	<select id="selectCityModel" parameterType="Map"
+		resultType="com.mockCommon.model.web.pingan.AddressModel">
+		select * from tb_carinsu_area where
+		city_level = 2 
+		and parent_code = #{parent_code} 
+		order by city_code
+	</select>
+	
+	<select id="selectTownModel" parameterType="Map"
+		resultType="com.mockCommon.model.web.pingan.AddressModel">
+		select * from tb_carinsu_area where
+		city_level = 3 
+		and parent_code = #{parent_code} 
+		order by city_code
+	</select>
+
+</mapper>
